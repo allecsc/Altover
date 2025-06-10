@@ -1,0 +1,118 @@
+/* Import files from other themes */
+
+/* Nebula */
+@import "Nebula/modules/General-UI.css";
+@import "Nebula/modules/Sidebar.css";
+@import "Nebula/modules/Topbar-buttons.css";
+@import "Nebula/modules/Pinned-extensions.css";
+@import "Nebula/modules/Tabstyles.css";
+@import "Nebula/modules/Essentials.css";
+@import "Nebula/modules/Sound-icon.css";
+@import "Nebula/modules/Toolbar.css";
+@import "Nebula/modules/Animations(tabs).css";
+@import "Nebula/modules/Tabfolders.css";
+@import "Nebula/modules/Workspace-buttons.css";
+@import "Nebula/Nebula-config.css";
+
+/* Natsumi */
+@import "../natsumi-config.css";
+@import "natsumi/modules/preload.css";
+@import "natsumi/modules/natsumi-urlbar.css";
+@import "natsumi/modules/natsumi-findbar.css";
+@import "natsumi/modules/natsumi-library.css";
+@import "natsumi/modules/natsumi-miniplayer.css";
+@import "natsumi/modules/natsumi-pip.css";
+@import "natsumi/modules/context-menu.css";
+@import "natsumi/modules/ui-tweaks.css";
+@import "natsumi/modules/postload.css";
+
+
+/*============================================================================*/
+
+
+/* custom extension icons */
+
+[label="Zen Internet"] image {
+  list-style-image: url("Zen_Internet_pastel.png") !important;
+}
+
+
+/* Add style to window buttons */
+
+@media not (prefers-contrast) {
+  .titlebar-button {
+    position: relative !important;
+    border-radius: 5px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important; /* Prevent layout shift */
+    transition: 
+      background-color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+  }
+
+  .titlebar-button::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 8px;
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color) 5%, black),
+      color-mix(in srgb, var(--zen-primary-color) 30%, black),
+      color-mix(in srgb, var(--zen-primary-color) 75%, black),
+      color-mix(in srgb, var(--zen-primary-color) 100%, black),
+      color-mix(in srgb, var(--zen-primary-color) 50%, black),
+      color-mix(in srgb, var(--zen-primary-color) 15%, black)
+    );
+    background-size: 400% 400%;
+    filter: blur(10px) brightness(1);
+    opacity: 0;
+    pointer-events: none;
+    animation: tab-hover-gradient 13s linear infinite paused;
+    transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .titlebar-button:hover::before {
+    opacity: 0.5;
+    animation-play-state: running;
+  }
+
+  .titlebar-button:hover {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25); /* Add a glowing effect on hover */
+  }
+
+  /* Remove animation gradient from the close button */
+  .titlebar-close::before {
+    content: none !important;
+  }
+}
+
+/* Keyframes for the animated gradient */
+@keyframes tab-hover-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Hover Close 
+
+@-moz-document url-prefix("chrome:") {
+  #tabbrowser-tabs
+    .tabbrowser-tab:not([pinned]):is([visuallyselected]):not(:hover)
+    .tab-close-button {
+    display: none !important;
+  }
+  
+}
+*/
+

@@ -1,0 +1,218 @@
+/* === OVERRIDES FOR PINNED EXTENSIONS === */
+/* 1. Remove height restriction from original */
+#TabsToolbar-customization-target #tabbrowser-tabs {
+  height: unset !important; /* Resets to default */
+}
+
+/* === TABFOLDERS OVERRIDE === */
+/* From: Tabfolders.css | Change: Adjusted label margin-top */
+tab-group:not([split-view-group]) .tab-group-label-container > label {
+    margin-top: 6px !important; /* Original: 6px */
+  }
+
+/* === TAB STYLES OVERRIDE === */
+
+/* ----------------------- Tab Hover Gradient ----------------------- */
+
+.tabbrowser-tab::before {
+  inset: 2px;
+  transform: translateX(0%);
+}
+
+/* ------------------- Close button -------------------- */
+/* Red gradient when hovering over close or reset button */
+.tabbrowser-tab .tab-background::before {
+    background: linear-gradient(to left, rgba(139, 10, 10, 0.75), rgba(139, 30, 10, 0) 40%, transparent 40%) !important;
+  }
+
+/* Selected tab style similar to hover over effect */
+  .tabbrowser-tab:not([pinned])[selected="true"] .tab-background,
+  .tabbrowser-tab:not([pinned])[visuallyselected="true"] .tab-background {
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color) 2%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 10%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 25%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 40%, black),
+      color-mix(in srgb, var(--zen-primary-color) 20%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 5%, black)  
+    ) !important;
+    background-size: 200% 200% !important;
+    background-position: 50% 50% !important;
+    box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.55)) !important;
+  }
+  
+  #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"] .tab-background,
+  #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"] .tab-background {
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color) 2%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 10%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 25%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 40%, black),
+      color-mix(in srgb, var(--zen-primary-color) 20%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 5%, black)  
+    ) !important;
+    background-size: 200% 200% !important;
+    background-position: 50% 50% !important;
+    box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.055), rgba(0, 0, 0, 0.55)) !important;
+  }
+
+  .tabbrowser-tab:not([pinned])[selected="true"]:hover .tab-background,
+  .tabbrowser-tab:not([pinned])[visuallyselected="true"]:hover .tab-background,
+  #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"]:hover .tab-background,
+  #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"]:hover .tab-background {
+    background: none !important;
+  }
+
+/* === TOPBAR BUTTONS OVERRIDE === */
+/* From: Topbar-buttons.css | Change: Adjusted button margin */
+#zen-sidebar-top-buttons,
+#zen-sidebar-top-buttons-customization-target {
+  & toolbarbutton:not(.titlebar-button) {
+    margin-top: -4px !important;
+    padding: 5px !important;
+    scale: 1.25;
+  }
+}
+
+#zen-workspaces-button .subviewbutton[active='true'] {
+  background-color: transparent !important;
+  scale: 1.15 !important;
+}
+
+#PanelUI-menu-button {
+  scale: 1.25 !important;
+}
+
+/* === WORKSPACE BUTTON STYLE OVERRIDE === */
+
+/* Style 3 (Minimal Style without Indicator) */
+@media (-moz-pref("nebula-workspace-style", 3)) {
+  /* Container styling */
+  #zen-workspaces-button {
+    height: 30px !important;
+    padding: 3px !important;
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 1;
+    border-radius: calc(var(--nebula-border-radius) - 2px) !important;
+    background-color: transparent !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0) !important;
+    transition: box-shadow 0.35s ease-out, background-color 0.35s ease-out;
+  }
+
+  #zen-workspaces-button:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0) !important;
+    background-color: transparent !important;
+  }
+
+  /* Button styling - resets and custom styles */
+  #zen-workspaces-button .subviewbutton {
+    border-radius: unset !important;
+    font-size: unset !important;
+    opacity: unset !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    animation: none !important;
+    --toolbarbutton-hover-background: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+    font-size: 1.25em !important;
+    transform: scale(1) !important;
+    transform-origin: bottom center !important;
+    transition: 
+      transform 0.25s ease, 
+      filter 0.3s ease, 
+      opacity 0.3s ease-out, 
+      color 0.3s ease-out !important;
+    color: grayscale !important;
+  }
+
+  /* Hover states */
+  #zen-workspaces-button .subviewbutton:hover {
+    transform: scale(1.4) !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    z-index: 3 !important;
+    font-size: 1.35em !important;
+    color: inherit !important;
+  }
+
+  #zen-workspaces-button .subviewbutton:active {
+    background-color: transparent !important;
+    transform: scale(1) !important;
+    filter: grayscale(var(--nebula-workspace-grayscale, 100%)) !important;
+  }
+
+  #zen-workspaces-button .subviewbutton:active:hover {
+    transform: scale(1) !important;
+  }
+
+  #zen-workspaces-button .subviewbutton[active] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    overflow: unset !important;
+    position: static !important;
+    animation: none !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    color: inherit !important;
+  }
+
+  /* Sibling hover effects */
+  #zen-workspaces-button .subviewbutton:hover + .subviewbutton,
+  #zen-workspaces-button .subviewbutton:has(+ .subviewbutton:hover) {
+    transform: scale(1.15) !important;
+    z-index: 2 !important;
+    opacity: 0.9 !important;
+  }
+
+  #zen-workspaces-button .subviewbutton:hover + .subviewbutton + .subviewbutton,
+  #zen-workspaces-button .subviewbutton:has(+ .subviewbutton + .subviewbutton:hover) {
+    transform: scale(1) !important;
+    z-index: 1 !important;
+    opacity: 0.85 !important;
+  }
+
+
+/* === URLBAR OVERRIDE === */
+  /* ------------------ URLbar loading & hover animation ------------------ */
+#urlbar .urlbar-input-container {
+  border-radius: var(--urlbar-icon-border-radius) !important;
+  overflow: hidden;
+  position: relative;
+}
+
+#urlbar .urlbar-input-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color) 5%, black),
+      color-mix(in srgb, var(--zen-primary-color) 30%, black),
+      color-mix(in srgb, var(--zen-primary-color) 75%, black),
+      color-mix(in srgb, var(--zen-primary-color) 100%, black),
+      color-mix(in srgb, var(--zen-primary-color) 50%, black),
+      color-mix(in srgb, var(--zen-primary-color) 15%, black)
+  );
+  background-size: 300% 100%;
+  background-repeat: repeat-x;
+  clip-path: inset(0 round var(--urlbar-icon-border-radius));
+  animation: urlbar-gradient 8s linear infinite;
+  opacity: 0;
+  filter: blur(20px) brightness(1) contrast(120%);
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Show animation when a tab is loading or on hover */
+#main-window:has(.tabbrowser-tab[selected][busy]) .urlbar-input-container::before,
+#urlbar:not([open]):hover .urlbar-input-container::before {
+  opacity: 0.685;
+}
