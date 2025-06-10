@@ -1,0 +1,59 @@
+@-moz-document url-prefix("chrome:") {
+  
+  /**
+  * Zen Mod: Right Side Glance Buttons
+  * Move the at a glance buttons to the right side of the window.
+  * Pontus Sundén <hi@pontus.cc>
+  */
+  #zen-glance-sidebar-container toolbarbutton {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+  }
+  
+  #zen-glance-sidebar-container toolbarbutton::before {
+    content: "";
+    position: absolute;
+    inset: 6px; /* Make the glow slightly larger than the button */
+    border-radius: 2px; /* Adjust as needed */
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 5%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 30%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 75%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 100%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 50%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 15%, black)
+    );
+    background-size: 200% 200%;
+    opacity: 0;
+    filter: blur(8px) brightness(1) contrast(120%);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+    animation: tab-hover-gradient 3.5s linear infinite;
+    animation-play-state: paused;
+  }
+  
+  #zen-glance-sidebar-container toolbarbutton:hover::before {
+    opacity: 0.5;
+    animation-play-state: running;
+  }
+
+    #zen-glance-sidebar-container {
+      left: unset !important;
+      right: 5.8% !important;
+      top: 60px !important;
+      toolbarbutton {
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.07) !important;
+        border: rgba(180, 180, 180, 0.7) 0.2px solid;
+        background: rgba(0, 0, 0, 0.2) !important;
+      }      
+    }
+    #zen-glance-sidebar-close.toolbarbutton-1 .toolbarbutton-icon,
+    #zen-glance-sidebar-split.toolbarbutton-1 .toolbarbutton-icon,
+    #zen-glance-sidebar-open.toolbarbutton-1 .toolbarbutton-icon {
+      fill: rgba(0, 0, 0, 0.7) !important;
+    }
+  
+}
