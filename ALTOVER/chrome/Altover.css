@@ -236,10 +236,12 @@
   }
 
   #zen-glance-sidebar-container {
-    left: unset !important;
-    right: 5.6% !important;
-    top: 80px !important;
+    position: absolute !important;
+    margin-top: 1% !important;
+    left: calc(90% + 60px) !important;
+    z-index: 9999 !important;
   }
+  
   #zen-glance-sidebar-container toolbarbutton {
     background: light-dark(rgba(255,255,255,0.4), rgba(0,0,0,0.4)) !important;
     backdrop-filter: blur(32px) saturate(140%) !important;
