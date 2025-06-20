@@ -179,11 +179,33 @@
 /*========================= Glance Effects ===========================*/
 
 @-moz-document url-prefix("chrome:") {
-  
+    
   #zen-glance-sidebar-container toolbarbutton {
     position: relative;
     overflow: visible;
     z-index: 1;
+    background: light-dark(rgba(255,255,255,0.6), rgba(0,0,0,0.6)) !important;
+    backdrop-filter: blur(32px) saturate(140%) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2) !important;
+    padding: 4px 8px !important;
+    border: rgba(180, 180, 180, 0.7) 0.2px solid;
+  }
+
+  #zen-glance-sidebar-container {
+    left: 92.5% !important;
+    top: 99px !important;
+    toolbarbutton {
+      box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.07) !important;
+      border: rgba(180, 180, 180, 0.7) 0.2px solid;
+      background: rgba(0, 0, 0, 0.2) !important;
+    }      
+  }
+
+  #zen-glance-sidebar-close.toolbarbutton-1 .toolbarbutton-icon,
+  #zen-glance-sidebar-split.toolbarbutton-1 .toolbarbutton-icon,
+  #zen-glance-sidebar-open.toolbarbutton-1 .toolbarbutton-icon {
+    fill: light-dark(rgba(255,255,255,0.7), rgba(0,0,0,0.7)) !important;
   }
   
   /* Glow effect background */
@@ -233,27 +255,6 @@
       filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000) !important;
       animation: none !important;
     }
-  }
-
-  #zen-glance-sidebar-container {
-    position: absolute !important;
-    margin-top: 1% !important;
-    left: calc(90% + 60px) !important;
-    z-index: 9999 !important;
-  }
-  
-  #zen-glance-sidebar-container toolbarbutton {
-    background: light-dark(rgba(255,255,255,0.4), rgba(0,0,0,0.4)) !important;
-    backdrop-filter: blur(32px) saturate(140%) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2) !important;
-    padding: 4px 8px !important;
-    border: rgba(180, 180, 180, 0.7) 0.2px solid;
-  }
-  #zen-glance-sidebar-close.toolbarbutton-1 .toolbarbutton-icon,
-  #zen-glance-sidebar-split.toolbarbutton-1 .toolbarbutton-icon,
-  #zen-glance-sidebar-open.toolbarbutton-1 .toolbarbutton-icon {
-    fill: light-dark(rgba(255,255,255,0.7), rgba(0,0,0,0.7)) !important;
   }
 
   .zen-glance-background > vbox {
