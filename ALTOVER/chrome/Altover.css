@@ -378,7 +378,8 @@
     position: relative !important;
     border-radius: 5px !important;
     overflow: hidden !important;
-    box-sizing: border-box !important;
+    box-sizing: border-box !important;    
+    background: transparent !important;
     /* Essentials border style */
     border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
     border-top: 1px solid #ffffff2d !important;
@@ -388,8 +389,51 @@
     min-height: 28px !important;
     margin: 0px 0px 2px 1px !important;
   }
+  
+  .titlebar-button::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 2px;
+    background: radial-gradient(ellipse at left, rgb(218, 142, 94), black);
+    background-size: 300%;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
   .titlebar-button:hover {
-    border-color: rgba(255, 255, 255, 0.14) !important;
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 34%, transparent) !important;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  }
+  
+  .titlebar-button:hover::before {
+    opacity: 0.5;
+  }
+  
+  .titlebar-close::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 2px;
+    background: radial-gradient(ellipse at left, red, black);
+    background-size: 300%;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .titlebar-close:hover {
+    border-color: rgba(237, 69, 69, 0.35) !important;    
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  }
+  
+  .titlebar-close:hover::before {
+    opacity: 0.9;
   }
 
   /* Glowing effect for window button icons */
@@ -399,28 +443,26 @@
   @media (prefers-color-scheme: dark) {
     .titlebar-button:hover .toolbarbutton-icon {
       fill: #fff !important;
-      filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
+      animation: none !important;
+    }
+    .titlebar-close:hover .toolbarbutton-icon{
+      fill: rgb(255, 0, 0) !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
       animation: none !important;
     }
   }
   @media (prefers-color-scheme: light) {
     .titlebar-button:hover .toolbarbutton-icon {
       fill: #000 !important;
-      filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000) !important;
+      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
       animation: none !important;
     }
-  }
-}
-
-@keyframes tab-hover-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    .titlebar-close:hover .toolbarbutton-icon{
+      fill: rgb(255, 0, 0) !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
+      animation: none !important;
+    }
   }
 }
 
