@@ -1,0 +1,567 @@
+@import "tweaks/Context-Menu.css";
+@import "tweaks/Essentials.css";
+@import "tweaks/Glow-Effect-Icon.css";
+@import "tweaks/Containers.css";
+
+/*========================= Floating Tabs ================================*/
+
+@-moz-document url-prefix("chrome:") {
+  
+  window.sidebar-panel:not([hidden="true"]) {
+    visibility: visible !important;
+  }
+  
+  #sidebar-box {
+    transform: translateX(-5%);
+    transition: all 0.25s ease-in-out;
+    pointer-events: none;
+  }
+  
+  #sidebar-box[checked="true"] {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+  }
+  
+  #sidebar-box[hidden="true"] {
+    transform: translateX(-5%) !important;
+    pointer-events: none !important;
+  }
+  
+  window.sidebar-panel,
+  #sidebar,
+  #sidebar-header,
+  #sidebar-box,
+  #template-container,
+  .sidebar-search-container {
+    background: light-dark(rgba(255,255,255,0), rgba(0,0,0,0)) !important;
+    backdrop-filter: blur(2px) !important;
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
+    border-top: 0 !important;
+    border-bottom: 1px solid #4442441f !important;
+    z-index: 9999 !important;
+  }
+
+  search-textbox#search-box {
+    appearance: none !important;
+    background-color: color-mix(in srgb, var(--zen-colors-tertiary) 50%, transparent) !important;
+    border: 1px solid var(--zen-colors-border) !important;
+    padding: 19px !important;
+    border-radius: 5px !important;
+  }
+
+  #sidebar-header {
+    background: light-dark(rgba(255,255,255,0.4), rgba(0,0,0,0.4)) !important;
+    backdrop-filter: blur(2px) !important;
+  }
+
+  #sidebar-box[sidebarcommand="viewHistorySidebar"] #sidebar-header,
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"] #sidebar-header,
+  #sidebar-box[sidebarcommand="viewTabsSidebar"] #sidebar-header {
+    border-top: 1px solid #ffffff2d !important;
+    border-bottom: 0 !important;
+    background-color: transparent !important;
+  }
+
+  #sidebar-box[sidebarcommand="viewHistorySidebar"],
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"],
+  #sidebar-box[sidebarcommand="viewTabsSidebar"] {
+    position: fixed;
+    z-index: 1;
+    height: 80vh !important;
+    width: 25em !important;
+    top: 10vh !important;
+    left: 0.2vw !important;
+    background: light-dark(rgba(255,255,255,0.4), rgba(0,0,0,0.4)) !important;
+    backdrop-filter: blur(0px) !important;
+    border-radius: 13px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.6) !important;
+  }
+
+  #sidebar-box[hidden="true"][sidebarcommand="viewHistorySidebar"],
+  #sidebar-box[hidden="true"][sidebarcommand="viewBookmarksSidebar"],
+  #sidebar-box[hidden="true"][sidebarcommand="viewTabsSidebar"] {
+    display: flex !important;
+    opacity: 0 !important;
+    transform: translateX(-5%);
+  }
+
+  #sidebar-box[checked="true"][sidebarcommand="viewHistorySidebar"],
+  #sidebar-box[checked="true"][sidebarcommand="viewBookmarksSidebar"],
+  #sidebar-box[checked="true"][sidebarcommand="viewTabsSidebar"] {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1) !important;
+  }
+
+  #sidebar-box[sidebarcommand="viewHistorySidebar"]::before,
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"]::before,
+  #sidebar-box[sidebarcommand="viewTabsSidebar"]::before {
+    content: "";
+    position: absolute !important;
+    z-index: 0 !important;
+    background: light-dark(rgba(255,255,255,0.4), rgba(0,0,0,0.4)) !important;
+    backdrop-filter: blur(4px)  !important;
+    border-radius: 13px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.6) !important;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  #sidebar-box[sidebarcommand="viewHistorySidebar"] > *,
+  #sidebar-box[sidebarcommand="viewBookmarksSidebar"] > *,
+  #sidebar-box[sidebarcommand="viewTabsSidebar"] > * {
+    margin: 0 !important;
+  }
+
+  #sidebar-box:not([checked="true"]) {
+    pointer-events: none !important;
+  }
+
+  #sidebar-box:not([checked="true"]) + #sidebar-splitter,
+  #sidebar-splitter {
+    display: none !important;
+  }
+
+  /* Remove background and add text effect on hover for sidebar items */
+  .sidebar-panel treechildren::-moz-tree-row(hover),
+  .sidebar-panel treechildren::-moz-tree-row(selected, focus),
+  .sidebar-panel .bookmark-item:hover,
+  .sidebar-panel li:hover,
+  #sidebar-switcher-target {
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  .sidebar-panel treechildren::-moz-tree-cell-text(hover),
+  .sidebar-panel .bookmark-item:hover,
+  .sidebar-panel li:hover,
+  .item-title-container:hover {
+    color: var(--identity-tab-color, #da8d5e) !important;
+    filter: brightness(1.2) !important;
+    text-shadow: 0 0 2px currentColor !important;
+    transition: all 0.2s;
+  }
+
+  #sidebar-switcher-target:hover {
+    color: var(--identity-tab-color, #da8d5e) !important;
+    text-shadow: 0 0 2px currentColor !important;
+    transition: all 0.2s;
+  }  
+  
+  image#sidebar-icon {
+    display: none !important;
+  } 
+}
+/*========================================================================*/
+
+  /* ---------------------- NOGAPS MOD ------------------------ */
+  
+  @media (-moz-pref("nebula-nogaps-mod")) {
+    /* Simplified selector to avoid expensive :has() */
+    [zen-single-toolbar="true"] {
+      
+      #zen-appcontent-wrapper {
+        position: relative;
+      }
+  
+      #zen-appcontent-navbar-wrapper {
+        position: absolute;
+        width: 100% !important;
+        height: 50px;
+        /* Reduced blur for better performance */
+        backdrop-filter: blur(32px);
+        background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+        border-bottom: 0px !important;
+      }
+  
+      #zen-tabbox-wrapper {
+        margin: 0 !important;
+      }
+  
+      .browserSidebarContainer {
+        border-radius: 0.1px !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  
+  /* ----------------- NOGAPS COMPACT MOD ----------------- */
+  
+  @media (-moz-bool-pref: "nebula-nogaps-compact-mod") {
+    :root[zen-compact-mode="true"]:not([customizing]) {
+        /* Simplified selector */
+        #zen-appcontent-wrapper {
+            margin: 0 !important;
+  
+            #zen-tabbox-wrapper {
+                margin: 0 !important;
+            }
+  
+            #zen-tabbox-wrapper .browserSidebarContainer,
+            #zen-tabbox-wrapper browser {
+                margin: 0 !important;
+                border-radius: 0 !important;
+            }
+        }
+    }
+    
+    /* Separate media query to avoid nesting */
+    @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
+      :root[zen-compact-mode="true"]:not([customizing]) #zen-appcontent-wrapper {
+          position: relative;
+      }
+
+      :root[zen-compact-mode="true"]:not([customizing]) #zen-appcontent-navbar-wrapper {
+        position: absolute;
+        width: 100% !important;
+        height: 50px; /* Optional: thicker navbar */
+        /* Reduced blur for better performance */
+        backdrop-filter: blur(32px);
+        background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+        border-bottom: 0px !important;
+      }
+    }
+  }
+
+/*========================= Floating Statusbar ===========================*/
+
+@-moz-document url-prefix("chrome:") {
+  #statuspanel {
+    margin-left: 5px !important;
+    margin-bottom: 2px !important;
+  }
+
+  @keyframes statusbar-show-animation {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  #statuspanel-label {
+    border-radius: 10000px !important;
+    padding: 3px 10px !important;
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
+    border-top: 1px solid #ffffff2d !important;
+    border-bottom: 1px solid #4442441f !important;
+    background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)) !important;
+    backdrop-filter: blur(32px) saturate(140%) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    will-change: transform, opacity;
+    animation: statusbar-show-animation 0.25s cubic-bezier(.4,0,.2,1);
+  }  
+}
+/*========================================================================*/
+
+
+/*========================= Glance Effects ===========================*/
+
+@-moz-document url-prefix("chrome:") {
+  
+  #zen-glance-sidebar-container toolbarbutton {
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    background: light-dark(rgba(255,255,255,0.6), rgba(0,0,0,0.6)) !important;
+    backdrop-filter: blur(32px) saturate(140%) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2) !important;
+    padding: 4px 8px !important;
+    border: rgba(180, 180, 180, 0.7) 0.2px solid;
+  }
+
+  #zen-glance-sidebar-container {
+    left: 92.5% !important;
+    top: 99px !important;
+    toolbarbutton {
+      box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.07) !important;
+      border: rgba(180, 180, 180, 0.7) 0.2px solid;
+      background: rgba(0, 0, 0, 0.2) !important;
+    }      
+  }
+
+  #zen-glance-sidebar-close.toolbarbutton-1 .toolbarbutton-icon,
+  #zen-glance-sidebar-split.toolbarbutton-1 .toolbarbutton-icon,
+  #zen-glance-sidebar-open.toolbarbutton-1 .toolbarbutton-icon {
+    fill: light-dark(rgba(255,255,255,0.7), rgba(0,0,0,0.7)) !important;
+  }
+  
+  /* Glow effect background */
+  
+  #zen-glance-sidebar-container toolbarbutton::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 2px;
+    background: linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 5%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 30%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 75%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 100%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 50%, black),
+      color-mix(in srgb, var(--zen-primary-color, #00c8ff) 15%, black)
+    );
+    background-size: 200% 200%;
+    opacity: 0;
+    filter: blur(8px) brightness(1) contrast(120%);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+    animation: tab-hover-gradient 3.5s linear infinite;
+    animation-play-state: paused;
+  }
+  #zen-glance-sidebar-container toolbarbutton:hover::before {
+    opacity: 0.5;
+    animation-play-state: running;
+  }
+
+  /* New Glow Effect for icons */
+  #zen-glance-sidebar-container toolbarbutton .toolbarbutton-icon {
+    transition: filter 0.3s ease-in-out !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    #zen-glance-sidebar-container toolbarbutton:hover .toolbarbutton-icon {
+      fill: #fff !important;
+      filter: drop-shadow(0 0 0.5px #ffffff) drop-shadow(0 0 0.5px #ffffff) !important;
+      animation: none !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    #zen-glance-sidebar-container toolbarbutton:hover .toolbarbutton-icon {
+      fill: #000 !important;
+      filter: drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000) !important;
+      animation: none !important;
+    }
+  }
+
+  .zen-glance-background > vbox {
+    mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 4%,
+      transparent 7%,
+      transparent 93.5%,
+      black 96%,
+      black 100%
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+  }
+
+  .zen-glance-overlay > vbox {
+    background-color: light-dark(#fff7, #0007) !important;
+    margin-top: 0.5% !important;
+    margin-bottom: 0.5% !important;
+    height: 98% !important;
+    border-radius: 0.7em !important;
+    border: 1px solid light-dark(rgba(0,0,0,0.15), rgb(218, 142, 94)) !important;
+  }
+}
+
+/*========================= Cleaner Extensions Menu ===========================*/
+
+@-moz-document url-prefix("chrome:") {
+  #unified-extensions-view box.panel-header,
+  #unified-extensions-view > :nth-child(2),
+  #unified-extensions-description,
+  #unified-extensions-messages-container,
+  .unified-extensions-item-message-deck {
+    display: none !important;
+  }
+  #unified-extensions-view {
+    width: var(--menu-panel-width) !important;
+  }
+  panelview .unified-extensions-item-action-button {
+    padding-inline: 10px !important;
+    padding-block: 0px !important;
+  }
+  #unified-extensions-manage-extensions {
+    margin-inline: 4px !important;
+    padding: 8px 10px !important;
+    margin-block-end: 4px !important;
+  }
+  #unified-extensions-panel .unified-extensions-item {
+    margin-block: 2px !important;
+  }
+  #unified-extensions-view .unified-extensions-item-action-button:hover {
+    background-color: color-mix(in srgb, currentColor 3%, transparent) !important;
+  }
+  #unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+  .unified-extensions-item-row-wrapper {
+    padding: 0 !important;
+  }
+  #unified-extensions-view .unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon {
+    opacity: 0 !important;
+    transition: 0.2s ease !important;
+  }
+  #unified-extensions-panel .unified-extensions-item:hover {
+    .unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon {
+      opacity: 0.85 !important;
+    }
+    background-color: transparent !important;
+  }
+  #unified-extensions-view .unified-extensions-item-action-button .panel-no-padding .webextension-browser-action {
+    padding: 0 !important;
+  }
+  #unified-extensions-view .toolbar-menupopup :is(menu, menuitem), .subview-subheader, panelview .toolbarbutton-1, .subviewbutton, .widget-overflow-list .toolbarbutton-1 {
+    max-height: 3em !important;
+  }
+  #unified-extensions-view .subviewbutton-iconic {
+    & > .toolbarbutton-icon {
+      width: 1.2em !important;
+      height: 1.2em !important;
+      padding: 0.7em !important;
+    }
+  }
+}
+/*========================================================================*/
+
+/*========================= Zen Back Forward ===========================*/
+
+@-moz-document url-prefix("chrome:") {
+  :root:not([customizing]) #back-button[disabled] {
+    display: none !important;
+  }
+  :root:not([customizing]) #forward-button[disabled] {
+    display: none !important;
+  }
+}
+/*========================================================================*/
+
+/*========================= Hover Close  ===========================*/
+
+@-moz-document url-prefix("chrome:") {
+  #tabbrowser-tabs .tabbrowser-tab:not([pinned]):is([visuallyselected]):not(:hover) .tab-close-button {
+    display: none !important;
+  }
+}
+/*========================================================================*/
+
+/*==================== Hide Inactive Workspaces ==========================*/
+
+#zen-workspaces-button .subviewbutton:not([active="true"]) {
+  display: none!important;
+}
+#zen-workspaces-button:hover .subviewbutton:not([active="true"]) {
+  display: flex!important;
+}
+
+/*========================================================================*/
+
+
+/*==================== Window buttons Styling ============================*/
+
+@media not (prefers-contrast) {
+  .titlebar-button {
+    position: relative !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;    
+    background: transparent !important;
+    /* Essentials border style */
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
+    border-top: 1px solid #ffffff2d !important;
+    border-bottom: 1px solid #ffffff2d !important;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    margin: 0px 0px 0px 2px !important;
+  }
+  
+  .titlebar-close {
+    margin: 0px 0px 0px 2px !important;
+    border-radius: 8px 0px 0px 8px !important;
+  }
+  
+  .titlebar-button::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 2px;
+    background: radial-gradient(ellipse at left, rgb(218, 142, 94), black);
+    background-size: 300%;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .titlebar-button:hover {
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 34%, transparent) !important;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    background: rgba(0,0,0,0.7) !important;;
+  }
+  
+  .titlebar-button:hover::before {
+    opacity: 0.5;
+  }
+  
+  .titlebar-close::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 2px;
+    background: radial-gradient(ellipse at left, red, black);
+    background-size: 300%;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .titlebar-close:hover {
+    border-color: rgba(237, 69, 69, 0.35) !important;    
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  }
+  
+  .titlebar-close:hover::before {
+    opacity: 0.9;
+  }
+
+  /* Glowing effect for window button icons */
+  .titlebar-button .toolbarbutton-icon {
+    transition: filter 0.3s ease-in-out, fill 0.3s ease-in-out !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    .titlebar-button:hover .toolbarbutton-icon {
+      fill: #fff !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
+      animation: none !important;
+    }
+    .titlebar-close:hover .toolbarbutton-icon{
+      fill: rgb(255, 0, 0) !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
+      animation: none !important;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .titlebar-button:hover .toolbarbutton-icon {
+      fill: #000 !important;
+      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
+      animation: none !important;
+    }
+    .titlebar-close:hover .toolbarbutton-icon{
+      fill: rgb(255, 0, 0) !important;
+      filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 2px #fff) !important;
+      animation: none !important;
+    }
+  }
+}
+
+/*========================================================================*/
+
+/* custom extension icons */
+
+[label="Zen Internet"] image {
+  list-style-image: url("Zen_Internet_pastel.png") !important;
+}

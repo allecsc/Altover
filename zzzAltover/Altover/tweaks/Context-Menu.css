@@ -1,0 +1,42 @@
+
+@-moz-document url-prefix("chrome:") {
+  /* Context menu styling */  
+    #tabContextMenu,  
+    #contentAreaContextMenu,  
+    #toolbar-context-menu {  
+      slot::before {  
+        height: 50px !important;  
+        width: 50px !important;  
+        background-color: red !important;  
+      }  
+          --menuitem-padding: 3px !important;  
+    }  
+      
+    menuitem {  
+      transition: all 0.2s ease-in-out !important;  
+    }  
+      
+    [hasbeenopened="true"] {  
+      menuitem,  
+      menu {  
+        .menu-text {  
+          font-size: 0.93em !important;  
+          padding: 2px 5px !important;  
+          opacity: 1 !important;  
+          transition: all 0.2s ease-in-out !important;  
+        }  
+      
+        &:hover > .menu-text {  
+          padding-left: 8px !important;  
+          padding-right: 2px !important;  
+        }  
+      }  
+      
+      &:has(menu[open="true"]) {  
+        & > menuitem,  
+        menu:not([open="true"]) {  
+          opacity: 0.3 !important;  
+        }  
+      }  
+    }
+}
