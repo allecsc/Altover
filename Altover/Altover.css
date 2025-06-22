@@ -158,76 +158,6 @@
 }
 /*========================================================================*/
 
-  /* ---------------------- NOGAPS MOD ------------------------ */
-  
-  @media (-moz-pref("nebula-nogaps-mod")) {
-    /* Simplified selector to avoid expensive :has() */
-    [zen-single-toolbar="true"] {
-      
-      #zen-appcontent-wrapper {
-        position: relative;
-      }
-  
-      #zen-appcontent-navbar-wrapper {
-        position: absolute;
-        width: 100% !important;
-        height: 50px;
-        /* Reduced blur for better performance */
-        backdrop-filter: blur(32px);
-        background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
-        border-bottom: 0px !important;
-      }
-  
-      #zen-tabbox-wrapper {
-        margin: 0 !important;
-      }
-  
-      .browserSidebarContainer {
-        border-radius: 0.1px !important;
-        box-shadow: none !important;
-      }
-    }
-  }
-
-  
-  /* ----------------- NOGAPS COMPACT MOD ----------------- */
-  
-  @media (-moz-bool-pref: "nebula-nogaps-compact-mod") {
-    :root[zen-compact-mode="true"]:not([customizing]) {
-        /* Simplified selector */
-        #zen-appcontent-wrapper {
-            margin: 0 !important;
-  
-            #zen-tabbox-wrapper {
-                margin: 0 !important;
-            }
-  
-            #zen-tabbox-wrapper .browserSidebarContainer,
-            #zen-tabbox-wrapper browser {
-                margin: 0 !important;
-                border-radius: 0 !important;
-            }
-        }
-    }
-    
-    /* Separate media query to avoid nesting */
-    @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
-      :root[zen-compact-mode="true"]:not([customizing]) #zen-appcontent-wrapper {
-          position: relative;
-      }
-
-      :root[zen-compact-mode="true"]:not([customizing]) #zen-appcontent-navbar-wrapper {
-        position: absolute;
-        width: 100% !important;
-        height: 50px; /* Optional: thicker navbar */
-        /* Reduced blur for better performance */
-        backdrop-filter: blur(32px);
-        background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
-        border-bottom: 0px !important;
-      }
-    }
-  }
-
 /*========================= Floating Statusbar ===========================*/
 
 @-moz-document url-prefix("chrome:") {
@@ -558,10 +488,72 @@
   }
 }
 
+/* ---------------------- NOGAPS MOD ------------------------ */
+  
+@media (-moz-pref("nebula-nogaps-mod")) {
+  [zen-single-toolbar="true"]:not(:has(tab-group[split-view-group] .tabbrowser-tab:is([selected="true"], [visuallyselected="true"]))) {
+    
+    #zen-appcontent-wrapper {
+      position: relative;
+    }
+
+    #zen-appcontent-navbar-wrapper {
+      position: absolute;
+      width: 100% !important;
+      height: 50px;
+      backdrop-filter: blur(30px);
+      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
+      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+      border-bottom: 0px;
+    }
+
+    #zen-tabbox-wrapper {
+      margin: 0 !important;
+    }
+
+    .browserSidebarContainer {
+      border-radius: 0.1px !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+/* ----------------- NOGAPS COMPACT MOD ----------------- */
+
+@media (-moz-bool-pref: "nebula-nogaps-compact-mod") {
+  :root[zen-compact-mode="true"]:not([customizing]) {
+      #zen-appcontent-wrapper:not(:has(#tabbrowser-tabpanels[zen-split-view]), :has(#zen-sidebar-web-panel:not([hidden]):not([pinned]))) {
+          margin: 0 !important;
+
+          #zen-tabbox-wrapper {
+              margin: 0 !important;
+          }
+
+          #zen-tabbox-wrapper .browserSidebarContainer,
+          #zen-tabbox-wrapper browser {
+              margin: 0 !important;
+              border-radius: 0 !important;
+          }
+
+          @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
+            #zen-appcontent-wrapper {
+                position: relative;
+            }
+
+    #zen-appcontent-navbar-wrapper {
+      position: absolute;
+      width: 100% !important;
+      height: 50px; /* Optional: thicker navbar */
+      backdrop-filter: blur(30px);
+      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
+      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+      border-bottom: 0px;
+    }
+          }
+      }
+  }
+}
+
 /*========================================================================*/
 
-/* custom extension icons */
-
-[label="Zen Internet"] image {
-  list-style-image: url("Zen_Internet_pastel.png") !important;
-}
+/*========================================================================*/
