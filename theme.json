@@ -8,8 +8,8 @@
     "readme": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/main/README.md",
     "image": "https://github.com/allecsc/Altover/blob/sine/image.png",
     "author": "celalalt",
-    "version": "1.2",
-  "tags": [
+    "version": "1.2.1",
+    "tags": [
         "sine",
         "theme",
         "nebula",
@@ -17,6 +17,8 @@
         "glass",
         "black"
     ],
+    "modules": "JustADumbPrsn/Zen-Nebula",
+    "modules": "allecsc/Icon-Tweaker",
     "createdAt": "2025-06-19",
-    "updatedAt": "2025-06-22"
+    "updatedAt": "2025-06-23"
 }
