@@ -545,12 +545,15 @@
       width: 100% !important;
       height: 50px; /* Optional: thicker navbar */
       backdrop-filter: blur(30px);
+      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
       background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
-      border-bottom: 0.7px solid light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.1));
+      border-bottom: 0px;
     }
           }
       }
   }
 }
+
+/*========================================================================*/
 
 /*========================================================================*/
