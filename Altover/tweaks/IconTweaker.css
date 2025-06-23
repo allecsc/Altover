@@ -1,8 +1,9 @@
+
 @-moz-document url-prefix("chrome:") {
     @media (-moz-bool-pref: "zen.tabs.vertical") {
 
         /* Essentials icon size */
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="16px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="16px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -12,7 +13,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="18px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="18px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -25,7 +26,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="20px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="20px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -38,7 +39,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="22px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="22px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -51,7 +52,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="24px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="24px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -64,7 +65,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="26px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="26px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -77,7 +78,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="28px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="28px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -90,7 +91,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="30px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="30px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -103,7 +104,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="32px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="32px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -116,7 +117,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="34px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="34px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -129,7 +130,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="36px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="36px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -142,7 +143,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="38px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="38px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -155,7 +156,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-essentials-icon-size="40px"]) {
+        :root:has(#theme-Altover[icon-tweaker-essentials-icon-size="40px"]) {
             .tabbrowser-tab[zen-essential="true"] .tab-icon-pending,
             .tabbrowser-tab[zen-essential="true"] .tab-icon-image,
             .tabbrowser-tab[zen-essential="true"] .tab-sharing-icon-overlay,
@@ -170,7 +171,7 @@
 
 
         /* Pinned tabs icon size */
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="12px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="12px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -180,7 +181,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="14px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="14px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -190,7 +191,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="16px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="16px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -200,7 +201,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="18px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="18px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -213,7 +214,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="20px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="20px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -226,7 +227,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="22px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="22px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -239,7 +240,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="24px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="24px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -252,7 +253,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="26px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="26px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -265,7 +266,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="28px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="28px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -278,7 +279,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="30px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="30px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -291,7 +292,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="32px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="32px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -304,7 +305,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-pinned-icon-size="34px"]) {
+        :root:has(#theme-Altover[icon-tweaker-pinned-icon-size="34px"]) {
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab[pinned]:not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -318,7 +319,7 @@
         }
 
         /* Normal tabs icon size */
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="12px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="12px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -328,7 +329,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="14px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="14px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -338,7 +339,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="16px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="16px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -348,7 +349,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="18px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="18px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -361,7 +362,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="20px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="20px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -374,7 +375,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="22px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="22px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -387,7 +388,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="24px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="24px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -400,7 +401,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="26px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="26px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -413,7 +414,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="28px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="28px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -426,7 +427,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="30px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="30px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -439,7 +440,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="32px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="32px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -452,7 +453,7 @@
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-normal-icon-size="34px"]) {
+        :root:has(#theme-Altover[icon-tweaker-normal-icon-size="34px"]) {
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-pending,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-icon-image,
             .tabbrowser-tab:not([pinned]):not([zen-essential="true"]) .tab-sharing-icon-overlay,
@@ -467,37 +468,37 @@
 
         /* Workspace icons size */
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="10px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="10px"]) {
             #zen-workspaces-button {
                 font-size: 10px !important;
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="12px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="12px"]) {
             #zen-workspaces-button {
                 font-size: 12px !important;
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="14px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="14px"]) {
             #zen-workspaces-button {
                 font-size: 14px !important;
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="16px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="16px"]) {
             #zen-workspaces-button {
                 font-size: 16px !important;
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="18px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="18px"]) {
             #zen-workspaces-button {
                 font-size: 18px !important;
             }
         }
 
-        :root:has(#theme-Icon-Tweaker[icon-tweaker-workspace-icon-size="20px"]) {
+        :root:has(#theme-Altover[icon-tweaker-workspace-icon-size="20px"]) {
             #zen-workspaces-button {
                 font-size: 20px !important;
             }
