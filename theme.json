@@ -17,10 +17,7 @@
         "glass",
         "black"
     ],
-    "modules": [
-        "JustADumbPrsn/Zen-Nebula", 
-        "allecsc/Icon-Tweaker"
-    ],
+    "modules": "JustADumbPrsn/Zen-Nebula",      
     "createdAt": "2025-06-19",
     "updatedAt": "2025-06-23"
 }
