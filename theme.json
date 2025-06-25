@@ -19,5 +19,6 @@
     ],
     "modules": "JustADumbPrsn/Zen-Nebula",      
     "createdAt": "2025-06-19",
-    "updatedAt": "2025-06-23"
+    "updatedAt": "2025-06-23",
+    "fork": ["zen"]
 }
