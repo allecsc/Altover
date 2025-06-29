@@ -472,14 +472,14 @@ findbar toolbarbutton:active {
   .sidebar-panel .bookmark-item:hover,
   .sidebar-panel li:hover,
   .item-title-container:hover {
-    color: var(--zen-primary-color) !important;
+    color: var(--identity-tab-color, #da8d5e) !important;
     filter: brightness(1.2) !important;
     text-shadow: 0 0 2px currentColor !important;
     transition: all 0.2s;
   }
 
   #sidebar-switcher-target:hover {
-    color: var(--zen-primary-color) !important;
+    color: var(--identity-tab-color, #da8d5e) !important;
     text-shadow: 0 0 2px currentColor !important;
     transition: all 0.2s;
   }  
