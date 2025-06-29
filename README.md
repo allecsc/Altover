@@ -20,7 +20,7 @@ Altover is a refined fusion of Zen themes—rooted in [Nebula](https://github.co
 
 ## ✨ Features
 
-- Add-On for Nebula theme. _Check the store for Standalone version_
+- Add-On for Nebula theme. _Check the store for [Standalone](https://github.com/allecsc/Altover/tree/standalone) version_
 - Glass aesthetic with accent highlights _(Best used with dark theme)_
 - Floating panels with smooth transitions
 - Seamless, minimal UI elements
