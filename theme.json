@@ -1,6 +1,6 @@
 {
     "id": "Altover",
-    "name": "Altover",
+    "name": "Altover Standalone",
     "description": "Altover is a refined fusion of Zen themes—rooted in Nebula.",
     "homepage": "https://github.com/allecsc/Altover/tree/standalone",
     "preferences": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/standalone/preferences.json",
