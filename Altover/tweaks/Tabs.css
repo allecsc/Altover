@@ -1,0 +1,280 @@
+/* ------------------- Close and Reset Button Styling ------------------- */
+
+    .tab-reset-pin-button {
+        border-radius: var(--altover-border-radius) 0 0 var(--altover-border-radius) !important;
+        background-color: transparent;
+        transition: background-color 0.2s ease-out;
+    }
+    .tab-reset-pin-button:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .tabbrowser-tab .tab-background::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0; left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 3 !important;
+        opacity: 0 !important;
+        filter: blur(12px) contrast(120%) brightness(150%);
+        background: linear-gradient(to left, rgba(139, 10, 10, 1), rgba(139, 30, 10, 0) 40%, transparent 40%) !important;
+        transition: opacity 0.3s ease !important;
+    }
+    
+    .tabbrowser-tab:has(.tab-close-button:hover, .tab-reset-button:hover) .tab-background::after {
+        opacity: 0 !important;
+        transition: 1s ease-out;
+    }
+    .tabbrowser-tab:has(.tab-close-button:hover, .tab-reset-button:hover) .tab-background::before {
+        opacity: 0.7 !important;
+    }
+    
+    .tab-close-button,
+    .tab-reset-button {
+        border-radius: calc(var(--altover-border-radius) - 4px) !important;
+        transition: opacity 0.25s ease-out !important;
+    }
+    .tabbrowser-tab[selected="true"] .tab-close-button,
+    .tabbrowser-tab[visuallyselected="true"] .tab-close-button,
+    .tabbrowser-tab:hover .tab-close-button,
+    .tabbrowser-tab[selected="true"] .tab-reset-button,
+    .tabbrowser-tab[visuallyselected="true"] .tab-reset-button,
+    .tabbrowser-tab:hover .tab-reset-button {
+        opacity: 0.4 !important;
+    }
+    .tab-close-button:hover,
+    .tab-reset-button:hover {
+        opacity: 1 !important;
+    }
+    
+    html:not([zen-single-toolbar="true"]):not([zen-sidebar-expanded="true"]) 
+    .tab-close-button {
+        transform: translateY(2px) scale(1.2) !important;
+    }   
+
+/* ------------------- Pinned and Non-Pinned Tabs Styling ------------------- */
+
+    .tabbrowser-tab .tab-background {
+        border-radius: var(--altover-border-radius) !important;
+        position: relative !important;
+        box-shadow: 0 0 3px transparent !important;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    
+    .tabbrowser-tab[pinned] .tab-background {
+        background-color: transparent !important;
+    }
+/* 
+    .tabbrowser-tab[pinned]:hover .tab-background,
+    .tabbrowser-tab[pinned][selected="true"] .tab-background,
+    .tabbrowser-tab[pinned][visuallyselected="true"] .tab-background {
+        box-shadow: 0 0 2px color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+    }
+
+    .tabbrowser-tab:not([pinned]):hover .tab-background,
+    .tabbrowser-tab:not([pinned])[selected="true"] .tab-background,
+    .tabbrowser-tab:not([pinned])[visuallyselected="true"] .tab-background {
+        background-color: var(--altover-color-hover) !important;
+        box-shadow: 0 0 2px light-dark(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.55)) !important;
+    }
+*/
+    .tabbrowser-tab[pinned]:not(:hover)::before {
+        opacity: 0 !important;
+        transition: none !important;
+        border-color: color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+    }
+    
+    .tabbrowser-tab[pinned]:hover::before {
+        opacity: 1 !important;
+        transition: opacity 0.5s ease-in-out !important;
+        border-color: color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+    }
+    
+    /* Selected tab style similar to hover over effect */
+    
+    .tabbrowser-tab:not([pinned])[selected="true"] .tab-background,
+    .tabbrowser-tab:not([pinned])[visuallyselected="true"] .tab-background,
+    .tabbrowser-tab[pinned]:not([zen-essential="true"])[selected="true"] .tab-background,
+    .tabbrowser-tab[pinned]:not([zen-essential="true"])[visuallyselected="true"] .tab-background {
+        background: linear-gradient(
+        45deg,
+        color-mix(in srgb, var(--zen-primary-color) 2%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 10%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 25%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 40%, black),
+        color-mix(in srgb, var(--zen-primary-color) 20%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 5%, black)  
+        ) !important;
+        background-size: 200% 200% !important;
+        background-position: 50% 50% !important;
+        box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.55)) !important;
+    }
+
+    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"] .tab-background,
+    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"] .tab-background {
+        background: linear-gradient(
+        45deg,
+        color-mix(in srgb, var(--zen-primary-color) 2%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 10%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 25%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 40%, black),
+        color-mix(in srgb, var(--zen-primary-color) 20%, black),  
+        color-mix(in srgb, var(--zen-primary-color) 5%, black)  
+        ) !important;
+        background-size: 200% 200% !important;
+        background-position: 50% 50% !important;
+        box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.055), rgba(0, 0, 0, 0.55)) !important;
+    }
+
+    .tabbrowser-tab:not([pinned])[selected="true"]:hover .tab-background,
+    .tabbrowser-tab:not([pinned])[visuallyselected="true"]:hover .tab-background,
+    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"]:hover .tab-background,
+    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"]:hover .tab-background {
+        background: linear-gradient(90deg,
+            transparent 0%,
+            transparent 15%,
+            color-mix(in srgb, var(--zen-primary-color) 10%, black) 30%,
+            color-mix(in srgb, var(--zen-primary-color) 25%, black) 50%,
+            color-mix(in srgb, var(--zen-primary-color) 40%, black) 70%,
+            color-mix(in srgb, var(--zen-primary-color) 20%, black) 85%,
+            color-mix(in srgb, var(--zen-primary-color) 5%, black) 100%
+        ) !important;
+        background-size: 200% 200% !important;
+        background-position: 0% 50% !important;
+        animation: tab-hover-fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes tab-hover-fade-in {
+        from {
+            background-position: -100% 50%;
+            opacity: 0.2;
+        }
+        to {
+            background-position: 50% 50%;
+            opacity: 1;
+        }
+    }
+
+    /* --- Hover Effect --- */
+  
+  .tabbrowser-tab:not([pinned]):not([selected="true"]):not([visuallyselected="true"]):hover .tab-background {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        transparent 15%,
+        color-mix(in srgb, var(--zen-primary-color) 10%, black) 30%,
+        color-mix(in srgb, var(--zen-primary-color) 25%, black) 50%,
+        color-mix(in srgb, var(--zen-primary-color) 40%, black) 70%,
+        color-mix(in srgb, var(--zen-primary-color) 20%, black) 85%,
+        color-mix(in srgb, var(--zen-primary-color) 5%, black) 100%
+    ) !important;
+    background-size: 200% 200% !important;
+    background-position: 0% 50% !important;
+    animation: tab-hover-fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes tab-hover-fade-in {
+    from {
+        background-position: -100% 50%;
+        opacity: 0.2;
+    }
+    to {
+        background-position: 50% 50%;
+        opacity: 1;
+    }
+}
+
+/* Multi Selected Tabs */
+.tabbrowser-tab[multiselected="true"] .tab-background {
+  position: relative !important;
+  overflow: visible !important;
+  background: linear-gradient(45deg,
+      color-mix(in srgb, var(--zen-primary-color) 2%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 10%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 25%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 40%, black),
+      color-mix(in srgb, var(--zen-primary-color) 20%, black),  
+      color-mix(in srgb, var(--zen-primary-color) 5%, black)  
+  ) !important;
+  background-size: 200% 200% !important;
+  background-position: 50% 50% !important;
+  box-shadow: 0 0 3px light-dark(rgba(255,255,255,0.05), rgba(0,0,0,0.55)) !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.tabbrowser-tab[multiselected="true"] .tab-background::after,
+.tabbrowser-tab[multiselected="true"][selected="true"] .tab-background::after {
+  content: none !important;
+}
+
+  /* --- New Tab Button Styling --- */
+  #tabs-newtab-button.toolbarbutton-1 {
+    position: relative;
+    background: transparent !important;
+    border: none;
+    box-shadow: 0 0 3px transparent !important;
+  }
+
+  /* Hide the overflow background gradient */
+  .workspace-arrowscrollbox[overflowing] {
+    --zen-scrollbar-overflow-background: transparent !important;
+    background: transparent !important;
+  }
+
+  /* Also remove any visual overlay pseudo-elements */
+  .workspace-arrowscrollbox[overflowing]::before,
+  .workspace-arrowscrollbox[overflowing]::after {
+    content: none !important;
+    display: none !important;
+  }
+    
+  /* --- Border Effect --- */
+  .tabbrowser-tab:not([zen-essential="true"]),
+  #tabs-newtab-button.toolbarbutton-1 {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--altover-border-radius) + 1px);
+  }
+  
+  .tabbrowser-tab:not([zen-essential="true"])::before,
+  #tabs-newtab-button.toolbarbutton-1::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: var(--altover-border-radius) !important;
+    pointer-events: none;
+    opacity: 0;
+    border: 2px solid color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+    background: none !important;
+    transition: opacity 0.5s ease-in-out, border-color 0.5s ease, transform 0.5s ease;
+    mask: linear-gradient(to right, black 30%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 50%, transparent 60%);
+    -webkit-mask: linear-gradient(to right, black 30%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 50%, transparent 60%);
+  }
+  
+  .tabbrowser-tab:not([zen-essential="true"]):hover::before,
+  #tabs-newtab-button.toolbarbutton-1:hover::before {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out, border-color 0.4s ease, transform 0.4s ease;
+    background: none !important;
+  }
+
+  .tabbrowser-tab:not([zen-essential="true"]):not(:hover)::before {
+    border-color: color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+    opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Split view essentials mask effect */
+  tab-group[split-view-group] .tabbrowser-tab > .tab-stack > .tab-background::after {
+      mask-image: linear-gradient(to right, black, transparent 60%);
+  }
+
+  /* -------------------------- COLLAPSED TOOLBAR ESSENTIAL ITEM -------------------------- */
+
+  .collapsed-toolbar .essential-item {
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+  }
+
+

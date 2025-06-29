@@ -50,7 +50,7 @@
   
   /* It should work with only the following code, but it doesn't with Nebula installed from Sine 
      It will work together with the backup code, but it will flash red on the left side of the tab when you move the mouse away from the close button
-     Until I find a better solution, I will modify Tabstyles.css from Nebula directly */
+     Until I find a better solution, I will modify Tabstyles.css from Nebula directly * /
   
   .tabbrowser-tab .tab-background::before {
       background: linear-gradient(to left, rgba(139, 10, 10, 0.75), rgba(139, 30, 10, 0) 40%, transparent 40%) !important;
@@ -62,46 +62,7 @@
   }
   
   
-  /* Selected tab style similar to hover over effect */
-    .tabbrowser-tab:not([pinned])[selected="true"] .tab-background,
-    .tabbrowser-tab:not([pinned])[visuallyselected="true"] .tab-background {
-      background: linear-gradient(
-        45deg,
-        color-mix(in srgb, var(--zen-primary-color) 2%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 10%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 25%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 40%, black),
-        color-mix(in srgb, var(--zen-primary-color) 20%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 5%, black)  
-      ) !important;
-      background-size: 200% 200% !important;
-      background-position: 50% 50% !important;
-      box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.55)) !important;
-    }
-    
-    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"] .tab-background,
-    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"] .tab-background {
-      background: linear-gradient(
-        45deg,
-        color-mix(in srgb, var(--zen-primary-color) 2%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 10%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 25%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 40%, black),
-        color-mix(in srgb, var(--zen-primary-color) 20%, black),  
-        color-mix(in srgb, var(--zen-primary-color) 5%, black)  
-      ) !important;
-      background-size: 200% 200% !important;
-      background-position: 50% 50% !important;
-      box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0.055), rgba(0, 0, 0, 0.55)) !important;
-    }
-  
-    .tabbrowser-tab:not([pinned])[selected="true"]:hover .tab-background,
-    .tabbrowser-tab:not([pinned])[visuallyselected="true"]:hover .tab-background,
-    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][selected="true"]:hover .tab-background,
-    #vertical-pinned-tabs-container .tabbrowser-tab[pinned][visuallyselected="true"]:hover .tab-background {
-      background: none !important;
-    }
-  
+
   /* === TOPBAR BUTTONS OVERRIDE === */
   /* From: Topbar-buttons.css | Change: Adjusted button margin */
   #zen-sidebar-top-buttons,
@@ -168,6 +129,7 @@
         opacity 0.3s ease-out, 
         color 0.3s ease-out !important;
       color: grayscale !important;
+      outline: none !important;
     }
   
     /* Hover states */
@@ -178,6 +140,26 @@
       z-index: 3 !important;
       font-size: 1.35em !important;
       color: inherit !important;
+    }
+  
+    /* Dark mode: golden glow effect */
+    @media (prefers-color-scheme: dark) {
+      #zen-workspaces-button .subviewbutton:hover,
+      #zen-workspaces-button .subviewbutton:active:hover,
+      #zen-workspaces-button .subviewbutton[active]:hover,
+      #zen-workspaces-button .subviewbutton:active[active]:hover {
+        filter: grayscale(0%) drop-shadow(0 0 0.5px var(--zen-primary-color)) drop-shadow(0 0 0.5px var(--zen-primary-color)) !important;
+      }
+    }
+  
+    /* Light mode: black glow effect */
+    @media (prefers-color-scheme: light) {
+      #zen-workspaces-button .subviewbutton:hover,
+      #zen-workspaces-button .subviewbutton:active:hover,
+      #zen-workspaces-button .subviewbutton[active]:hover,
+      #zen-workspaces-button .subviewbutton:active[active]:hover {
+        filter: grayscale(0%) drop-shadow(0 0 1px #000) drop-shadow(0 0 1px #000) !important;
+      }
     }
   
     #zen-workspaces-button .subviewbutton:active {
@@ -225,165 +207,5 @@
     }
   }
   
-  /* === URLBAR OVERRIDE === */
   
-  #urlbar-background {
-    /* Essentials border style */
-    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
-    border-top: 1px solid #ffffff2d !important;
-    border-bottom: 1px solid #4442441f !important;
-  }
-  
-  /* ------------------- NATSUMI STYLE URLBAR ANIMATION -------------------- */
-  
-  #urlbar[open] #urlbar-background {
-    background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.6)) !important;
-  }
-  
-  /* Animation Variables - Faster timings */
-  :root {
-    --urlbar-appear-animation-duration: 0.20s;  /* Faster URLbar appear */
-    --urlbar-results-animation-duration: 0.5s;  /* Faster results appear */
-    --urlbar-individual-result-animation-duration: 0.6s;  /* Faster individual results */
-    --urlbar-individual-result-animation-delay: 0.06s;  /* Shorter delay between items */
-    --urlbar-individual-result-animation-delay-offset: 0.1s;  /* Shorter initial delay */
-    --urlbar-individual-result-expand-size: 1.05;  /* Slightly reduced scale */
-    --animation-duration-subtle: 0.3s;  /* Faster subtle animation */
-    --expand-width: var(--urlbar-individual-result-expand-size, 1.05);
-  }
-  
-  /* Keyframe Definitions */
-  @keyframes urlbar-appear {
-    0% { margin-top: -25vh; }
-    100% { margin-top: 0; }
-  }
-  
-  @keyframes urlbar-appear-sideways {
-    0% { margin-left: calc(-50% + calc(min(90%, 60rem) / 2)); }
-    100% { margin-left: 0; }
-  }
-  
-  @keyframes individual-result-appear {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-      background: color-mix(in srgb, var(--natsumi-colors-tertiary) 30%, transparent);
-      filter: blur(10px);
-    }
-    40% {
-      opacity: 1;
-    }
-    60% {
-      opacity: 1;
-      transform: scale(var(--expand-width));
-      background: color-mix(in srgb, var(--natsumi-primary-color) 15%, transparent);
-      filter: blur(0);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      background: transparent;
-    }
-  }
-  
-  @keyframes individual-result-appear-subtle {
-    0% {
-      opacity: 1;
-      transform: scale(1);
-      background: transparent;
-    }
-    60% {
-      transform: scale(1.02);
-      background: color-mix(in srgb, var(--natsumi-primary-color) 10%, transparent);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      background: transparent;
-    }
-  }
-  
-  @keyframes pinned-icon-appear {
-    0% { opacity: 0; transform: scale(0.8); }
-    40% { opacity: 1; }
-    60% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-  
-  @keyframes urlbar-gradient {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
-  }
-  
-  /* Animation Triggers */
-    #urlbar[breakout-extend] {
-      animation-name: urlbar-appear;
-      animation-duration: var(--urlbar-appear-animation-duration);
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother easing */
-    }
-  
-    #urlbar[breakout-extend][zen-floating-urlbar="true"] {
-      animation-name: urlbar-appear-sideways;
-      animation-duration: var(--urlbar-appear-animation-duration);
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-  
-    #urlbar-results .urlbarView-row {
-      animation-name: individual-result-appear;
-      animation-duration: var(--urlbar-individual-result-animation-duration);
-      animation-fill-mode: forwards;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0;
-    }
-  
-    #urlbar-results .urlbarView-row .urlbarView-type-icon {
-      animation-name: pinned-icon-appear;
-      animation-duration: 0.3s;
-      animation-fill-mode: forwards;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0;
-    }
-  
-    /* Individual result delays */
-    #urlbar-results .urlbarView-row:nth-child(1) {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 0) + var(--urlbar-individual-result-animation-delay-offset));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(2) {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 1) + var(--urlbar-individual-result-animation-delay-offset));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(3) {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 2) + var(--urlbar-individual-result-animation-delay-offset));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(4) {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 3) + var(--urlbar-individual-result-animation-delay-offset));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(5) {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 4) + var(--urlbar-individual-result-animation-delay-offset));
-    }
-  
-    /* Icon delays */
-    #urlbar-results .urlbarView-row:nth-child(1) .urlbarView-type-icon {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 0) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(2) .urlbarView-type-icon {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 1) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(3) .urlbarView-type-icon {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 2) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(4) .urlbarView-type-icon {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 3) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
-    }
-  
-    #urlbar-results .urlbarView-row:nth-child(5) .urlbarView-type-icon {
-      animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 4) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
-    }
-  }
   

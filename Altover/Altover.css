@@ -3,11 +3,342 @@
 @import "tweaks/Glow-Effect-Icon.css";
 @import "tweaks/Containers.css";
 @import "tweaks/IconTweaker.css";
+@import "tweaks/Tabs.css";
+@import "tweaks/Tabfolders.css";
+@import "tweaks/URLbar.css";
+
+/*========================= Global Config ================================*/
+
+:root {
+  --altover-border-radius: 13px; /* This will change roundness of everything in Altover (DEFAULT: 13px) */
+  --altover-website-tint: light-dark(rgba(255,255,255,0),rgba(0,0,0,0)); /* Edit the color values to change the tint on transparent websites */
+  --altover-ui-tint: light-dark(rgba(255,255,255,0.2),rgba(0,0,0,0.2)); /* Edit the color values to change the tint of sidebar and etc. */
+    
+  /* Tabs color */
+  --altover-color: light-dark(rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.35)); /* default color */
+  --altover-color-hover: light-dark(rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.45)); /* color when hovered */
+  --altover-accent-color: #da8d5e;
+}
+
+/* ------------------------- GENERAL ZEN UI ------------------------- */
+
+/* Main UI tint */
+#zen-main-app-wrapper {
+  background: var(--altover-ui-tint) !important;
+}
+
+/* Website background tint */
+browser[transparent='true'] {
+  background: var(--altover-website-tint) !important;
+}
+
+/* Hide identity label for Bonjourr */
+#identity-icon-label[value="Extension (Bonjourr · Minimalist Startpage)"] {
+  display: none !important;
+}
+
+/* Global overrides */
+:root {
+  --attention-dot-color: transparent !important;
+  --zen-themed-toolbar-bg-transparent: transparent !important;
+}
+
+/* Ensure blur rendering works */
+browser {
+  will-change: transform !important;
+}
+
+
+/* ---------------------- TABS: NO SHADOW ---------------------- */
+
+@media (-moz-pref("nebula-tabs-no-shadow")) {
+  hbox.browserSidebarContainer,
+  #zen-tabbox-wrapper {
+    box-shadow: none !important;
+  }
+}
+
+/* hide scrollbar */
+scrollbox {
+  scrollbar-width: none !important;
+}
+
+/* -------------------------- COLLAPSED FIX -------------------------- */
+
+:root:not([zen-sidebar-expanded="true"]) {
+  #titlebar #TabsToolbar {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    transform: none !important;
+    width: 60px !important;
+ }
+
+  #navigator-toolbox:not([zen-sidebar-expanded="true"]) {
+    max-width: calc(var(--zen-toolbox-max-width) + 5px) !important;
+    min-width: calc(var(--zen-toolbox-max-width) + 5px) !important;
+    padding-bottom: var(--zen-toolbox-padding);
+  
+  & #titlebar {
+      align-content: center !important;
+      justify-content: center !important;
+    }
+  }
+}
+
+/* -------------------------- COMPACT SIDEBAR -------------------------- */
+
+/* Fix for twilight acrylic */
+#navigator-toolbox:not([animate='true']) #titlebar {
+  position: relative;
+}
+
+#navigator-toolbox:not([animate='true']) #titlebar::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 11px !important;
+  background: transparent !important;
+}
+
+#navigator-toolbox:not([animate='true']) #titlebar::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent !important;
+  opacity: var(--zen-grainy-background-opacity, 0);
+  mix-blend-mode: overlay;
+}
+
+/* -------------------------- COMPACT SIDEBAR PSEUDO BACKGROUND -------------------------- */
+
+/* --- Base styling for all types --- */
+
+/* Sidebar container styling */
+body:has([zen-compact-mode="true"]) #titlebar {
+  padding: 8px !important;
+  border-radius: 11px !important;
+  scale: 1 !important;
+  background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)) !important;
+  backdrop-filter: blur(32px) saturate(140%) !important;
+}
+
+/* Pseudo background overlay */
+body:has([zen-compact-mode="true"]) #browser::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: -100000;
+  border-radius: 11px !important;
+  background-color: light-dark(rgba(200, 200, 200, 1), rgba(40, 40, 40, 1)) !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease;
+}
+
+/* Right-side pseudo background alignment */
+:root[zen-right-side="true"] body:has([zen-compact-mode="true"]) #browser::after {
+  left: auto !important;
+  right: calc(var(--zen-element-separation) / 0.65) !important;
+}
+/* Sidebar on right */
+:root[zen-right-side="true"] body:has([zen-compact-mode="true"]) #titlebar {
+  left: auto !important;
+  right: calc(var(--zen-element-separation) / 0.9) !important;
+}
+
+/* Show pseudo background when active/hovered */
+body:has([zen-compact-mode="true"] [zen-user-show=""],
+[zen-compact-mode="true"] #navigator-toolbox[zen-has-hover="true"]) #browser::after {
+  opacity: 1 !important;
+}
+:root[zen-right-side="true"] body:has([zen-compact-mode="true"] [zen-user-show=""],
+[zen-compact-mode="true"] #navigator-toolbox[zen-has-hover="true"]) #browser::after {
+  opacity: 1 !important;
+}
+
+/* config to remove pseudo bg */
+@media (-moz-pref("nebula-compact-mode-no-sidebar-bg")) {
+  body:has([zen-compact-mode="true"]) #browser::after {
+    content: none !important; /* removes the pseudo element */
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: none !important;
+  }
+}
+
+/* -------------------------- FINDBAR -------------------------- */
+
+@keyframes findbar-show-animation {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+findbar {
+    position: fixed !important;
+    top: 70px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 42px !important;
+    z-index: 1000 !important;
+    min-width: 90% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 10px !important;
+    background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)) !important;
+    backdrop-filter: blur(32px) saturate(140%) !important;
+    border-radius: 13px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+    will-change: transform, opacity;
+
+    
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
+    border-top: 1px solid #ffffff2d !important;
+    border-bottom: 1px solid #4442441f !important;
+    min-width: 380px !important;
+    max-width: 935px !important;
+}
+
+#zen-tabbox-wrapper::before {
+    position: absolute !important;
+    z-index: 0 !important;
+    content: "" !important;
+    background-color: light-dark(rgba(255, 255, 255, 1), rgba(40, 40, 40, 1)) !important;
+    opacity: 0;
+    width: 89%;
+    top: 70px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 43px !important;
+    bottom: auto !important;
+    border-radius: 13px;
+    visibility: visible !important;
+    transition: opacity 0.2s ease, width 0.5s ease !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    min-width: 380px !important;
+    max-width: 935px !important;
+}
+
+:has(.browserSidebarContainer.deck-selected > .browserContainer > findbar:not([hidden="true"])) #zen-tabbox-wrapper::before {
+    opacity: 1 !important;
+    width: 90.05%;
+    min-width: 380px !important;
+    max-width: 935px !important;
+}
+
+findbar:not([hidden="true"]) {
+    visibility: visible !important;
+    animation: findbar-show-animation 0.3s ease-out forwards !important;
+}
+
+
+findbar[hidden="true"] {
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s !important;
+}
+
+.findbar-textbox {
+    flex-grow: 1 !important;
+    min-width: 230px !important;
+    background: transparent !important;
+    color: inherit !important;
+    border: none !important;
+    outline: none !important;
+    font-size: 14px !important;
+    padding: 4px 10px !important;
+    box-shadow: none !important;
+}
+
+
+findbar toolbarbutton {
+    background: light-dark(rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.15)) !important;
+    border-radius: 6.5px !important;
+    transition: background 0.2s ease, transform 0.1s ease-out !important;
+}
+
+findbar .findbar-find-previous,
+findbar .findbar-find-next {
+  align-self: center;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 2px !important;
+    font-size: 10px !important;
+}
+
+.findbar-find-previous {
+    margin-right: 4px !important;
+}
+
+findbar .findbar-close {
+    width: 18px !important;
+    height: 18px !important;
+    padding: 2px !important;
+    font-size: 10px !important;
+    margin-left: auto !important;
+}
+
+findbar toolbarbutton:hover {
+    background: light-dark(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)) !important;
+    transform: scale(1.05) !important;
+}
+
+findbar toolbarbutton:active {
+    transform: scale(0.92) !important;
+}
 
 /*========================= Floating Tabs ================================*/
 
 @-moz-document url-prefix("chrome:") {
   
+
+  /* Transparent Sidebar Items */
+.sidebar-panel {
+  background: transparent !important;
+  font-weight: 600 !important;
+  opacity: 0.7 !important;
+}
+
+/* Clean & Transparent Sidebar Box */
+#sidebar-box {
+  background-color: light-dark(rgba(255, 255, 255, 0.11), rgba(0, 0, 0, 0.2)) !important;
+  border: none !important;
+}
+
+#sidebar-box #sidebar-header {
+  border-bottom: none !important;
+}
+
+/* Transparent Sidebar Search Box & View Button */
+#sidebar-search-container > #search-box,
+#viewButton {
+  padding: 4px 8px !important;
+  appearance: none !important;
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+#sidebar-search-container > #search-box:hover,
+#viewButton:hover,
+#sidebar-search-container > #search-box:active,
+#viewButton:active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
   window.sidebar-panel:not([hidden="true"]) {
     visibility: visible !important;
   }
@@ -141,22 +472,29 @@
   .sidebar-panel .bookmark-item:hover,
   .sidebar-panel li:hover,
   .item-title-container:hover {
-    color: var(--identity-tab-color, #da8d5e) !important;
+    color: var(--identity-tab-color, --zen-primary-color) !important;
     filter: brightness(1.2) !important;
     text-shadow: 0 0 2px currentColor !important;
     transition: all 0.2s;
   }
 
   #sidebar-switcher-target:hover {
-    color: var(--identity-tab-color, #da8d5e) !important;
+    color: var(--identity-tab-color, --zen-primary-color) !important;
     text-shadow: 0 0 2px currentColor !important;
     transition: all 0.2s;
   }  
   
   image#sidebar-icon {
     display: none !important;
-  } 
+  }
+
+  /* not working because who the fuck knows why
+  scrollbar.hidevscroll-scrollbar.scrollbar-topmost,
+  slider, thumb {
+    display: none !important;
+  }
 }
+
 /*========================================================================*/
 
 /*========================= Floating Statusbar ===========================*/
@@ -295,7 +633,7 @@
     margin-bottom: 0.5% !important;
     height: 98% !important;
     border-radius: 0.7em !important;
-    border: 1px solid light-dark(rgba(0,0,0,0.15), rgb(218, 142, 94)) !important;
+    border: 1px solid var(--zen-primary-color) !important;
   }
 }
 
@@ -429,7 +767,7 @@
   .titlebar-button:hover {
     border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 34%, transparent) !important;
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    background: rgba(0,0,0,0.7) !important;;
+    background: rgba(255,255,255,0.02) !important;;
   }
   
   .titlebar-button:hover::before {
@@ -441,7 +779,7 @@
     position: absolute;
     inset: 0;
     border-radius: 2px;
-    background: radial-gradient(ellipse at left, red, rgb(0, 0, 0));
+    background: radial-gradient(ellipse at left, red, rgb(255, 0, 0));
     background-size: 300%;
     opacity: 0;
     filter: blur(8px);
@@ -503,8 +841,7 @@
       width: 100% !important;
       height: 50px;
       backdrop-filter: blur(30px);
-      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
-      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+      background: var(--zen-main-browser-background) !important;
       border-bottom: 0px;
     }
 
@@ -546,8 +883,7 @@
       width: 100% !important;
       height: 50px; /* Optional: thicker navbar */
       backdrop-filter: blur(30px);
-      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
-      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
+      background: var(--zen-main-browser-background) !important;
       border-bottom: 0px;
     }
           }
@@ -557,4 +893,92 @@
 
 /*========================================================================*/
 
+/* ------------------------- QUIETIFY SOUND ICON ------------------------- */
+
+/* ---- Volume Icon Theming ---- */
+/* edited from github.com/itsmefen/Dark-Harmony */
+.tabbrowser-tab img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]) img {
+  opacity: 0 !important;
+  transition: opacity 0.1s !important;
+}
+
+.tab-icon-overlay {  
+ 
+  &:is([soundplaying], [muted], [activemedia-blocked]) {
+    display: block !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+    top: 0px !important;
+    right: 0px !important;
+    scale: 1.5 !important;
+    opacity: 0.9 !important;
+    margin: 0px 3px !important;
+    background: white !important;
+    /* svg modified from https://samherbert.net/svg-loaders/ */
+    --play-svg: url('data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%20135%20140%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%22%3E%3Crect%20y%3D%2210%22%20width%3D%2215%22%20height%3D%22120%22%20rx%3D%226%22%3E%3Canimate%20attributeName%3D%22height%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20values%3D%22120%3B110%3B100%3B90%3B80%3B70%3B60%3B50%3B40%3B140%3B120%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22y%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20values%3D%2210%3B15%3B20%3B25%3B30%3B35%3B40%3B45%3B50%3B0%3B10%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Frect%3E%3Crect%20x%3D%2230%22%20y%3D%2210%22%20width%3D%2215%22%20height%3D%22120%22%20rx%3D%226%22%3E%3Canimate%20attributeName%3D%22height%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20values%3D%22120%3B110%3B100%3B90%3B80%3B70%3B60%3B50%3B40%3B140%3B120%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22y%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20values%3D%2210%3B15%3B20%3B25%3B30%3B35%3B40%3B45%3B50%3B0%3B10%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Frect%3E%3Crect%20x%3D%2260%22%20width%3D%2215%22%20height%3D%22140%22%20rx%3D%226%22%3E%3Canimate%20attributeName%3D%22height%22%20begin%3D%220s%22%20dur%3D%221s%22%20values%3D%22120%3B110%3B100%3B90%3B80%3B70%3B60%3B50%3B40%3B140%3B120%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22y%22%20begin%3D%220s%22%20dur%3D%221s%22%20values%3D%2210%3B15%3B20%3B25%3B30%3B35%3B40%3B45%3B50%3B0%3B10%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Frect%3E%3Crect%20x%3D%2290%22%20y%3D%2210%22%20width%3D%2215%22%20height%3D%22120%22%20rx%3D%226%22%3E%3Canimate%20attributeName%3D%22height%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20values%3D%22120%3B110%3B100%3B90%3B80%3B70%3B60%3B50%3B40%3B140%3B120%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22y%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20values%3D%2210%3B15%3B20%3B25%3B30%3B35%3B40%3B45%3B50%3B0%3B10%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Frect%3E%3Crect%20x%3D%22120%22%20y%3D%2210%22%20width%3D%2215%22%20height%3D%22120%22%20rx%3D%226%22%3E%3Canimate%20attributeName%3D%22height%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20values%3D%22120%3B110%3B100%3B90%3B80%3B70%3B60%3B50%3B40%3B140%3B120%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3Canimate%20attributeName%3D%22y%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20values%3D%2210%3B15%3B20%3B25%3B30%3B35%3B40%3B45%3B50%3B0%3B10%22%20calcMode%3D%22linear%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Frect%3E%3C%2Fsvg%3E');
+    --mute-svg: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxMzYgMTQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiPjxyZWN0IHg9IjQiIHk9IjcwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHJ4PSI2Ii8+PHJlY3QgeD0iMzQiIHk9IjcwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHJ4PSI2Ii8+PHJlY3QgeD0iNjQiIHk9IjcwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHJ4PSI2Ii8+PHJlY3QgeD0iOTQiIHk9IjcwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTUiIHJ4PSI2Ii8+PHJlY3QgeD0iMTI0IiB5PSI3MCIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiByeD0iNiIvPjwvc3ZnPg==');
+    mask-size: 10px 10px !important;
+    mask-repeat: no-repeat !important;
+    mask-position: center !important;
+  }
+
+  @media (prefers-color-scheme: light) {
+    &:is([soundplaying], [muted], [activemedia-blocked]) {
+      filter: invert(1);
+    }
+  }
+
+  &:is([activemedia-blocked]) {
+    background: none !important;
+    list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEb0lEQVR4nO2YW4hWVRTHP7URvM6ooWYa1kPlQ4GXxISyC4mUVg/RZQyjKLUsUcsmJRm8pqUgXSCRbhZCqT1mkARaWm+l9qK9jCKZ2KhUD4nWLxbuM/1ncfb3nfPNGaeH84cPPtZ/n7XX2pe1/3tXKiVKlChR4v8I4BZgFtCnB/q+AnjQYuiqo2bgby6htbAIs/e/KvRtMTxWr5PpwHn+w3uFR1o7hg+kf4vlnrwOrgHaxckp4Npuizgex3Wh7wS/AWOyftwH2C8f/wFM6Pao4/FMDDEk+BboneXDBXTGbMe/CvwKbOqGoFcCx4Hlzv64i2l+LUdXAmflg22Of9E5bCowif7O92LHfyLcGWBYNWerXePhwt0JXBT+G6BXUYmEPvaKf+trmnAj3CCvjDkZ5Bq2CDcwTHmCX4DRRSYR+hkNnJR+jgEDhH/FDfTANCdPukaDhXtNuL+AKe7Qmgc8kjNoKyrPAwuBBrHfGvpIsEa4wSG2BE+kOf5aGrwl9mGuarzhvtsqXOZkgOfku3cdt1G434Ghwr0t3B7vtNGt/8nCLXUzpU7nC5c+QvFEnnXfzhVuqFvmS4WbIvYLunIqQUslOKWbGDgk3GqxD3HTvE+XSGjTFxgXfn1TOPtGD7sm4dcId1DsvYHTwt2nTtcJ8anbfIrxkQrX7ipc/7A8zkkb+/860E/aDXeDsUq4Ca7vq4XbkbaHjNglRMdhZEJN7G1upn4W7mWXxHfEccAl0yLcEbH3cpXyUXcoJ9ihiRwU4qHIqOtM3Sh2U6YjIhs1hg3S/ipR2IYbhNtOyrkBPCz2HzURzfx2sW8T+2axPyD2Q27d63KK4awruT8Jd3+KjDd8KPZpYj+miZyJ7IPPI8tHK84XYrdNnRU68rvTdBSwROy7IvunPW8iLZGyuzuy5GrhevnuS7HP60oiurRuE/tHGZbW4R5eWm15N/tnkZG3jTpSOCuxtbBe2o8C/onM1PYMm/0HTWRnpPzanV0FnJbfo5Fl1y+U2Bj2u/K7rI7yuyJWftdGyuwYF8T4yLR7yW/JbHAyw/6vd0lEpTmXboaxA3FnmtowYmYViXI4okSb3L0+TaI0iERJ46pJlLVpZ0WQKNY2wb1eNJoAS9DxjmRl142qisa5btSeqdSnfg1PO8WtM/WScFPFbjEPqibj36wi4ze677YI15wjEbuLJNjiuE1VZPw7wn2V92K1zr0vTXUXq6dsM+a5+oZS/UKYmQY34ucjirvRzdScvFfdAa6CnMz8vtS1q26biVDhlwvXnnrVzfD4cIe7fH1f5OND2MQH3PpX3TfSHbattZ6DVK587PjFdEZjgYlY34pFjtfD0arWkLzVxD/Q2fSeUCleYDKbQ5DLnH1O7uoYXjfsWTKBVayJlR4CMAn4U+LZm+nJVE50/4g9ttujdrCHc/eIfVpP+EywJ3xXBjvV+ssB4H3p32K5q15HzVKpOp5kLheA1tD3RRWN9Tq7Cbi7sOjyl+QZwM090X+JEiVKlKjUwr/rwkME7dPwYwAAAABJRU5ErkJggg==") !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0px 3px !important;
+  }
+
+  &:is([soundplaying]) {
+    list-style-image: none !important;
+    mask-image: var(--play-svg) !important;
+  }
+
+  &:is([muted]) {
+    list-style-image: none !important;
+    mask-image: var(--mute-svg) !important;
+  }
+}
+@media not (-moz-bool-pref: "zen.view.sidebar-expanded") {
+    .tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]):hover img {
+        opacity: 1 !important;
+        transition: opacity 0.1s ease-out !important;
+    }
+
+    .tabbrowser-tab:is([soundplaying], [muted], [activemedia-blocked]):hover .tab-icon-overlay { 
+        margin: 0px !important;
+        transition: opacity 0.1s ease-out, transform 0.1s ease-out !important;
+        transform: translate(6.9px, -6.9px) scale(0.69) !important;
+    }
+}
+
+.tab-audio-button {
+  display: none !important;
+}
+
 /*========================================================================*/
+
+  /* ------------------- PDF Tab Custom Icon ------------------- */
+tab[label$='.pdf'] img.tab-icon-image {
+  background: url("data:image/svg+xml,%3Csvg ...%3C/svg%3E%0A") !important;
+  width: 32px !important;
+  height: 32px !important;
+  scale: 0.5 !important;
+  margin-left: -5px !important;
+  transform: translateX(4px);
+}
+
+tab[label$='.pdf'] .tab-label-container {
+  margin-left: -8px !important;
+}

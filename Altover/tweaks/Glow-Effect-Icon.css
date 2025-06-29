@@ -13,7 +13,7 @@
     /* .tabbrowser-tab:hover .tab-icon-image:not([zen-essential="true"]), */
         .tabbrowser-tab[pinned]:hover .tab-icon-image:not([zen-essential="true"]),
         .tabbrowser-tab[zen-essential="true"]:hover .tab-icon-image {
-          filter: drop-shadow(0 0 1px #da8d5e) drop-shadow(0 0 1px #da8d5e) !important;
+          filter: drop-shadow(0 0 1px var(--zen-primary-color)) drop-shadow(0 0 1px var(--zen-primary-color)) !important;
           animation: none !important;
         }
       }

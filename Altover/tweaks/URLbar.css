@@ -1,0 +1,399 @@
+/* ------------------ URLBAR Styling ------------------ */
+
+.urlbarView-url {
+  color: light-dark(rgba(90,90,90,1), rgba(145,145,145,1)) !important;
+}
+
+#urlbar-zoom-button {
+  border-radius: calc(var(--altover-border-radius) - 5px) !important;
+}
+
+html[zen-single-toolbar="true"] #urlbar {
+  margin-bottom: -4px !important;
+}
+
+#urlbar-background {
+  background: transparent !important;
+  box-shadow: 0 0px 3px light-dark(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0)) !important;
+  border-radius: var(--altover-border-radius) !important;
+  backdrop-filter: none;
+  transition: box-shadow 0.3s ease;
+  /* Essentials border style */
+  border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
+  border-top: 1px solid #ffffff2d !important;
+  border-bottom: 1px solid #4442441f !important;
+}
+
+#urlbar .urlbar-input,
+.urlbar-input-container {
+  text-align: center !important;
+  position: relative;
+}
+
+html[zen-single-toolbar="true"] #urlbar:not([open]) {
+  height: 40px !important;
+}
+
+#identity-icon-box {
+  background: none !important;
+}
+
+/* Selected row highlight & favicon fix */
+.urlbarView-row[selected] {
+  background-color: none !important;
+}
+
+.urlbarView-row-inner[selected] .urlbarView-favicon {
+  background: none !important;
+}
+
+/* Invert search icon in dark mode */
+@media (prefers-color-scheme: dark) {
+  .urlbarView-favicon[src="chrome://global/skin/icons/search-glass.svg"] {
+    filter: invert(1);
+  }
+}
+
+/* Rounded corners for URL results */
+.urlbarView-row {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--altover-border-radius);
+  background: none !important;
+}
+
+.urlbarView-row::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(var(--altover-border-radius) - 2px);
+  pointer-events: none;
+  opacity: 0;
+  border: 2px solid color-mix(in srgb, var(--zen-primary-color) 100%, black) !important;
+  background: none !important;
+  transition: opacity 0.5s ease-in-out, border-color 0.5s ease, transform 0.5s ease;
+  mask: linear-gradient(to right, black 30%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 50%, transparent 60%);
+  -webkit-mask: linear-gradient(to right, black 30%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 50%, transparent 60%);
+}
+
+.urlbarView-row:hover::before {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.urlbarView-row:not(:hover)::before {
+  border-color: color-mix(in srgb, var(--zen-primary-color) 40%, black) !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease-in-out, border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* URL bar open state */
+#urlbar[open] {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  backdrop-filter: none !important;
+  animation: fadeIn 0.15s cubic-bezier(0.12, 0, 0.39, 0) !important;
+}
+
+#urlbar[open] #urlbar-background {
+  border-radius: 15px !important;
+  background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.8)) !important;
+  backdrop-filter: blur(32px) saturate(140%) !important;
+  opacity: 1 !important;
+  outline: none !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+/* ------------------ Browser Stack Animations ------------------ * /
+
+.browserStack {
+  filter: none !important;
+  opacity: 1 !important;
+  scale: 1 !important;
+  transition:
+    filter 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35),
+    opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.35),
+    scale 0.25s cubic-bezier(0.175, 0.885, 0.32, 1) !important;
+}
+
+#browser:has(#urlbar[open]) .browserStack {
+  filter: blur(1rem) brightness(70%) saturate(140%) !important;
+  scale: 1.075 !important;
+  transition:
+    filter 0.25s cubic-bezier(0.175, 0.385, 0.12, 1),
+    opacity 0.25s cubic-bezier(0.175, 0.385, 0.12, 1),
+    scale 0.25s cubic-bezier(0.175, 0.385, 0.12, 1) !important;
+}
+
+/* ------------------ URLbar Open Hover Links Gradient Animation ------------------ * /
+
+#urlbar[open] #urlbar-results > * {
+  position: relative;
+  overflow: hidden;
+}
+
+#urlbar[open] #urlbar-results > *::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: 300% 100%;
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--zen-primary-color) !important;
+}
+
+/* Smooth opacity transition on hover * /
+#urlbar[open] #urlbar-results > *:hover::before {
+  opacity: 0.31;
+}
+
+/* ------------------ URLbar Loading & Hover Animation ------------------ */
+
+#urlbar .urlbar-input-container {
+  border-radius: var(--altover-border-radius) !important;
+  position: relative;
+}
+
+#urlbar .urlbar-input-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(20px) brightness(1) contrast(120%);
+  transition: opacity 0.5s ease-in-out;
+  background: color-mix(in srgb, var(--zen-primary-color) 80%, black);
+}
+
+/* Show animation when a tab is loading or on hover */
+#main-window:has(.tabbrowser-tab[selected][busy]) .urlbar-input-container::before,
+#urlbar:not([open]):hover .urlbar-input-container::before {
+  opacity: 0.485;
+}
+
+/* ------------------ Keyframes ------------------ * /
+
+@keyframes urlbar-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes individual-result-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animation to each link row * /
+#urlbar-results .urlbarView-row {
+  animation: individual-result-appear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+/* Staggered delay for up to 5 results * /
+#urlbar-results .urlbarView-row:nth-child(1) { animation-delay: 0s; }
+#urlbar-results .urlbarView-row:nth-child(2) { animation-delay: 0.05s; }
+#urlbar-results .urlbarView-row:nth-child(3) { animation-delay: 0.1s; }
+#urlbar-results .urlbarView-row:nth-child(4) { animation-delay: 0.15s; }
+#urlbar-results .urlbarView-row:nth-child(5) { animation-delay: 0.2s; }
+#urlbar-results .urlbarView-row:nth-child(6) { animation-delay: 0.25s; }
+#urlbar-results .urlbarView-row:nth-child(7) { animation-delay: 0.3s; }
+
+/* === URLBAR OVERRIDE === */
+  
+/* ------------------- NATSUMI STYLE URLBAR ANIMATION -------------------- */
+
+#urlbar[open] #urlbar-background {
+  background: light-dark(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.6)) !important;
+}
+
+/* Animation Variables - Faster timings */
+:root {
+  --urlbar-appear-animation-duration: 0.20s;  /* Faster URLbar appear */
+  --urlbar-results-animation-duration: 0.5s;  /* Faster results appear */
+  --urlbar-individual-result-animation-duration: 0.6s;  /* Faster individual results */
+  --urlbar-individual-result-animation-delay: 0.06s;  /* Shorter delay between items */
+  --urlbar-individual-result-animation-delay-offset: 0.1s;  /* Shorter initial delay */
+  --urlbar-individual-result-expand-size: 1.05;  /* Slightly reduced scale */
+  --animation-duration-subtle: 0.3s;  /* Faster subtle animation */
+  --expand-width: var(--urlbar-individual-result-expand-size, 1.05);
+}
+
+/* Keyframe Definitions */
+@keyframes urlbar-appear {
+  0% { margin-top: -25vh; }
+  100% { margin-top: 0; }
+}
+
+@keyframes urlbar-appear-sideways {
+  0% { margin-left: calc(-50% + calc(min(90%, 60rem) / 2)); }
+  100% { margin-left: 0; }
+}
+
+@keyframes individual-result-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    background: color-mix(in srgb, var(--natsumi-colors-tertiary) 30%, transparent);
+    filter: blur(10px);
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(var(--expand-width));
+    background: color-mix(in srgb, var(--natsumi-primary-color) 15%, transparent);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background: transparent;
+  }
+}
+
+@keyframes individual-result-appear-subtle {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    background: transparent;
+  }
+  60% {
+    transform: scale(1.02);
+    background: color-mix(in srgb, var(--natsumi-primary-color) 10%, transparent);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background: transparent;
+  }
+}
+
+@keyframes pinned-icon-appear {
+  0% { opacity: 0; transform: scale(0.8); }
+  40% { opacity: 1; }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes urlbar-gradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Animation Triggers */
+  #urlbar[breakout-extend] {
+    animation-name: urlbar-appear;
+    animation-duration: var(--urlbar-appear-animation-duration);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);  /* Smoother easing */
+  }
+
+  #urlbar[breakout-extend][zen-floating-urlbar="true"] {
+    animation-name: urlbar-appear-sideways;
+    animation-duration: var(--urlbar-appear-animation-duration);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #urlbar-results .urlbarView-row {
+    animation-name: individual-result-appear;
+    animation-duration: var(--urlbar-individual-result-animation-duration);
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  #urlbar-results .urlbarView-row .urlbarView-type-icon {
+    animation-name: pinned-icon-appear;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+  }
+
+  /* Individual result delays */
+  #urlbar-results .urlbarView-row:nth-child(1) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 0) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(2) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 1) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(3) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 2) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(4) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 3) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(5) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 4) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+  
+  #urlbar-results .urlbarView-row:nth-child(6) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 5) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(7) {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 6) + var(--urlbar-individual-result-animation-delay-offset));
+  }
+
+
+  /* Icon delays */
+  #urlbar-results .urlbarView-row:nth-child(1) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 0) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(2) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 1) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(3) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 2) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(4) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 3) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(5) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 4) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(6) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 5) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+
+  #urlbar-results .urlbarView-row:nth-child(7) .urlbarView-type-icon {
+    animation-delay: calc((var(--urlbar-individual-result-animation-delay) * 6) + var(--urlbar-individual-result-animation-delay-offset) + var(--urlbar-individual-result-animation-duration));
+  }
+}
