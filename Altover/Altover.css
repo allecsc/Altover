@@ -8,6 +8,41 @@
 
 @-moz-document url-prefix("chrome:") {
   
+
+  /* Transparent Sidebar Items */
+.sidebar-panel {
+  background: transparent !important;
+  font-weight: 600 !important;
+  opacity: 0.7 !important;
+}
+
+/* Clean & Transparent Sidebar Box */
+#sidebar-box {
+  background-color: light-dark(rgba(255, 255, 255, 0.11), rgba(0, 0, 0, 0.2)) !important;
+  border: none !important;
+}
+
+#sidebar-box #sidebar-header {
+  border-bottom: none !important;
+}
+
+/* Transparent Sidebar Search Box & View Button */
+#sidebar-search-container > #search-box,
+#viewButton {
+  padding: 4px 8px !important;
+  appearance: none !important;
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+#sidebar-search-container > #search-box:hover,
+#viewButton:hover,
+#sidebar-search-container > #search-box:active,
+#viewButton:active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
   window.sidebar-panel:not([hidden="true"]) {
     visibility: visible !important;
   }
@@ -155,8 +190,9 @@
   
   image#sidebar-icon {
     display: none !important;
-  } 
+  }
 }
+
 /*========================================================================*/
 
 /*========================= Floating Statusbar ===========================*/
@@ -295,7 +331,7 @@
     margin-bottom: 0.5% !important;
     height: 98% !important;
     border-radius: 0.7em !important;
-    border: 1px solid light-dark(rgba(0,0,0,0.15), rgb(218, 142, 94)) !important;
+    border: 1px solid var(--zen-primary-color) !important;
   }
 }
 
@@ -429,7 +465,7 @@
   .titlebar-button:hover {
     border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 34%, transparent) !important;
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    background: rgba(0,0,0,0.7) !important;;
+    background: rgba(255,255,255,0.02) !important;;
   }
   
   .titlebar-button:hover::before {
@@ -441,7 +477,7 @@
     position: absolute;
     inset: 0;
     border-radius: 2px;
-    background: radial-gradient(ellipse at left, red, rgb(0, 0, 0));
+    background: radial-gradient(ellipse at left, red, rgb(255, 0, 0));
     background-size: 300%;
     opacity: 0;
     filter: blur(8px);
@@ -488,73 +524,5 @@
     }
   }
 }
-
-/* ---------------------- NOGAPS MOD ------------------------ */
-  
-@media (-moz-pref("nebula-nogaps-mod")) {
-  [zen-single-toolbar="true"]:not(:has(tab-group[split-view-group] .tabbrowser-tab:is([selected="true"], [visuallyselected="true"]))) {
-    
-    #zen-appcontent-wrapper {
-      position: relative;
-    }
-
-    #zen-appcontent-navbar-wrapper {
-      position: absolute;
-      width: 100% !important;
-      height: 50px;
-      backdrop-filter: blur(30px);
-      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
-      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
-      border-bottom: 0px;
-    }
-
-    #zen-tabbox-wrapper {
-      margin: 0 !important;
-    }
-
-    .browserSidebarContainer {
-      border-radius: 0.1px !important;
-      box-shadow: none !important;
-    }
-  }
-}
-
-/* ----------------- NOGAPS COMPACT MOD ----------------- */
-
-@media (-moz-bool-pref: "nebula-nogaps-compact-mod") {
-  :root[zen-compact-mode="true"]:not([customizing]) {
-      #zen-appcontent-wrapper:not(:has(#tabbrowser-tabpanels[zen-split-view]), :has(#zen-sidebar-web-panel:not([hidden]):not([pinned]))) {
-          margin: 0 !important;
-
-          #zen-tabbox-wrapper {
-              margin: 0 !important;
-          }
-
-          #zen-tabbox-wrapper .browserSidebarContainer,
-          #zen-tabbox-wrapper browser {
-              margin: 0 !important;
-              border-radius: 0 !important;
-          }
-
-          @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
-            #zen-appcontent-wrapper {
-                position: relative;
-            }
-
-    #zen-appcontent-navbar-wrapper {
-      position: absolute;
-      width: 100% !important;
-      height: 50px; /* Optional: thicker navbar */
-      backdrop-filter: blur(30px);
-      filter: drop-shadow(0 0 2px #000) drop-shadow(0 0 2px #000) !important;
-      background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8)) !important;
-      border-bottom: 0px;
-    }
-          }
-      }
-  }
-}
-
-/*========================================================================*/
 
 /*========================================================================*/

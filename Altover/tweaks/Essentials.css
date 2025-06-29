@@ -1,121 +1,78 @@
-
-@-moz-document url-prefix("chrome:") {
-    @media not (-moz-pref("zen-feature-essentials-tweaks-disabled")) {
+@-moz-document url-prefix("chrome:") { 
     
-    
-    
-    /* --- Essential Tab --- */
-    
-    
-    
-    #zen-essentials-container {
-    
-      gap: 1px !important;
-    
-      margin-top: 2px;
-    
+  /* --- Essential Tab --- */    
+  
+  #zen-essentials-container {    
+    gap: 1px !important;    
+    margin-top: 2px;    
+  }
+  
+  .tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected]),
+  .tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected]) {    
+    background-image: radial-gradient(circle, #ffffff78, #ffffff1c 2px, transparent 2px) !important;
+  }    
+  
+  /* Essentials tabs: default transparent, color on hover */
+  .zen-essentials-container > .tabbrowser-tab:nth-child(1) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(2) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(3) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(4) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(5) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(6) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(7) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(8) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(9) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(10) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(11) > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(12) > stack:nth-child(1) > vbox:nth-child(1) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 0.5s ease-in-out !important;
+  }
+  .zen-essentials-container > .tabbrowser-tab:nth-child(1):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(2):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(3):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(4):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(5):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(6):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(7):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(8):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(9):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(10):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(11):hover > stack:nth-child(1) > vbox:nth-child(1),
+  .zen-essentials-container > .tabbrowser-tab:nth-child(12):hover > stack:nth-child(1) > vbox:nth-child(1) {
+    background-color: color-mix(in srgb, var(--zen-primary-color) 10%, transparent) !important;
+  }
+  
+  #zen-essentials-container > .tabbrowser-tab[pinned] .tab-background {    
+    border: 1px solid #f2f2f213 !important;    
+    border-top: 1px solid #ffffff13 !important;    
+    border-bottom: 1px solid #4442441f !important;    
+  }    
+  
+  .zen-essentials-container .tabbrowser-tab {    
+    .tab-background {    
+      border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;    
+      border-top: 1px solid #ffffff2d !important;    
+      border-bottom: 1px solid #4442441f !important;    
+      background-color: rgba(255, 255, 255, 0.05) !important;    
+    }    
+  }
+  
+  /* Audio Indicator */    
+  #zen-essentials-container .tabbrowser-tab[pinned] {    
+    &:is([soundplaying]) .tab-background {    
+      background-color: color-mix(in srgb,var(--identity-tab-color, var(--tab-group-color-gray-invert)) 15%,transparent) !important;    
     }
-    
-    .tabbrowser-tab:is([image], [pinned])
-    
-      > .tab-stack
-    
-      > .tab-content[attention]:not([selected]),
-    
-    .tabbrowser-tab
-    
-      > .tab-stack
-    
-      > .tab-content[pinned][titlechanged]:not([selected]) {
-    
-      background-image: radial-gradient(circle, #ffffff78, #ffffff1c 2px, transparent 2px) !important;
-    
-    }
-    
-    
-    
-    /* Change the background color of the first essential tab */
-    
-    .zen-essentials-container > .tabbrowser-tab:nth-child(1) > stack:nth-child(1) > vbox:nth-child(1) {
-    
-      background-color: rgba(255, 100, 100, 0.15) !important;
-    
-      box-shadow: none !important;
-    
-    }
-    
-    
-    
-    /* Change the background color of the second essential tab */
-    
-    .zen-essentials-container > .tabbrowser-tab:nth-child(2) > stack:nth-child(1) > vbox:nth-child(1) {
-    
-      background-color: rgba(93, 155, 255, 0.15) !important;
-    
-      box-shadow: none !important;
-    
-    }
-    
-    
-    
-    #zen-essentials-container > .tabbrowser-tab[pinned] .tab-background {
-    
-      border: 1px solid #f2f2f213 !important;
-    
-      border-top: 1px solid #ffffff13 !important;
-    
-      border-bottom: 1px solid #4442441f !important;
-    
-    }
-    
-    
-    
-    .zen-essentials-container .tabbrowser-tab {
-    
-      .tab-background {
-    
-        border: 1px solid color-mix(in srgb, var(--tab-group-color-gray-invert) 14%, transparent) !important;
-    
-        border-top: 1px solid #ffffff2d !important;
-    
-        border-bottom: 1px solid #4442441f !important;
-    
-        background-color: rgba(255, 255, 255, 0.05) !important;
-    
-      }
-    
-    }
-    
-    /* Audio Indicator */
-    
-    #zen-essentials-container .tabbrowser-tab[pinned] {
-    
-      &:is([soundplaying]) .tab-background {
-    
-        background-color: color-mix(in srgb,var(--identity-tab-color, var(--tab-group-color-gray-invert)) 15%,transparent) !important;
-    
-      }
-    
-      &:is([muted]) .tab-background {
-    
-        background-color: color-mix(in srgb,var(--identity-tab-color, var(--tab-group-color-gray-invert)) 10%,transparent) !important;
-    
-      }
-    
-    }
-    
-    
-    
-    /* Selected Indicator */
-    
-    #zen-essentials-container
-    
-      .tabbrowser-tab[pinned]:is([selected], [visuallyselected], [multiselected])
-    
-      .tab-background {
-    
-      background-color: rgba(255, 255, 255, 0.17) !important;
-    
-    }
+  
+    &:is([muted]) .tab-background {    
+      background-color: color-mix(in srgb,var(--identity-tab-color, var(--tab-group-color-gray-invert)) 10%,transparent) !important;    
+    }    
+  }       
+  
+  /* Selected Indicator */    
+  #zen-essentials-container    
+    .tabbrowser-tab[pinned]:is([selected], [visuallyselected], [multiselected]) .tab-background {    
+    background-color: rgba(255, 255, 255, 0.17) !important;    
   }
 }
