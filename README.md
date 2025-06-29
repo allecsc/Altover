@@ -9,27 +9,29 @@
 
 https://github.com/user-attachments/assets/aeb14a5f-7cab-4a0f-bbbf-f679bf772d93
 
-<h2 align="left">👀 What is Altover?</h2>
+<h2 align="left">👀 What is Altover Standalone?</h2>
 
 ###
 
-Altover is a refined fusion of Zen themes—rooted in [Nebula](https://github.com/JustAdumbPrsn/Zen-Nebula), inspired by [Natsumi](https://github.com/greeeen-dev/natsumi-browser), [Zemini](https://github.com/Mohammed55Z/Zemini), and [ZenZero](https://github.com/sameerasw/ZenZero), and shaped with a personal edge. It takes glassmorphism further, blending sharp minimal lines with soft blur and subtle golden highlights for a sleek, elevated UI experience.
+Altover Standalone is the next step in defining my own view. For those like me who always have way too many tabs open—and with the unloader issues in recent Zen updates—heavily animated themes have made Zen feel sluggish and unresponsive. Thus, I've decided to optimize Altover as much as possible, keeping the same vibe and getting rid of anything extra. This is still a work in progress, but I believe it's good enough for now.
+
+Inspired by [Nebula](https://github.com/JustAdumbPrsn/Zen-Nebula), [Natsumi](https://github.com/greeeen-dev/natsumi-browser), [Zemini](https://github.com/Mohammed55Z/Zemini), and [ZenZero](https://github.com/sameerasw/ZenZero). Thank you!
 
 ###
 
 
 ## ✨ Features
 
-- Black glass aesthetic with golden highlights
+- Accent highlights _(choose your own by editing theme)_
 - Floating panels with smooth transitions
 - Seamless, minimal UI elements
-- Glowing, golden animations
+- Glowing animations
 - Clean and simplified container styles
 ---
 
 ## 💫 Sine Setup & Altover Installation (Recommended)
 
-To get Altover working correctly, follow the steps below. This setup builds on **Sine**, uses the **Nebula** theme as a base, and layers on custom styling for a refined, glassy aesthetic.
+To get Altover Standalone working correctly, follow the steps below. This setup needs **Sine** for installation.
 
 ---
 
@@ -41,30 +43,14 @@ To get Altover working correctly, follow the steps below. This setup builds on *
 
 ---
 
-### 2. 💎 Install the Altover + Nebula Bundle
+### 2. 💎 Install the Altover Standalone
 
-#### Option A: *Via Sine Marketplace* (Recommended)
+#### *Via Sine Marketplace* (Recommended)
 
-* Open Zen Browser settings → **Sine**
-* Launch the **Marketplace**
-* Find **Altover** and click **Install**. This will install **BOTH** _Altover_ and _Nebula_ at the same time.
+* Open Zen Browser settings → **Sine Mods**
+* Copy-paste **allecsc/Altover/tree/standalone** there 👇. Hit **Install**. (_Manual install only for now_)
 
-![image](https://github.com/user-attachments/assets/a6a88c52-011f-46aa-b4be-1f8fd147ac8c)
-
-#### Option B: *Manual Installation*
-
-* Follow the instructions from the [Nebula GitHub repo](https://github.com/JustAdumbPrsn/Zen-Nebula)
-* Download the latest [Altover.zip](https://github.com/allecsc/Altover/releases).
-* Use the `userChrome.css` file provided in the ZIP and paste it directly into your `chrome` folder.
-
-  **OR**
-
-* Open your `userChrome.css` and add:
-     ```css
-     @import "Altover/Nebula_override.css";
-     @import "Altover/Altover.css";
-     ```
----
+![image](https://github.com/user-attachments/assets/da1490a1-ffc7-49b0-9270-0161903dea59)
 
 ### 3. 🧊 Enable Transparency
 
@@ -83,13 +69,11 @@ To achieve the full glassmorphism effect:
 
 ---
 
-## 🔧 Recommended Add-ons (via Sine)
+## 🔧 Recommended Add-ons (via Sine/Zen Mods)
 
 To enhance the experience further, install these Sine-compatible mods:
 
 * **SuperPins** – Improves pinned tab behavior and visuals
-* **Icon Tweaker** – Resize tab icons for Essentials, Pinned, and Workspace indicators
-
 ---
 
 ## 🪟 Optional: Windows 11 Taskbar Styling (Windhawk)
