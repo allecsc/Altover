@@ -1,23 +1,25 @@
 {
-    "id": "zzzAltover",
+    "id": "Altover",
     "name": "Altover",
     "description": "Altover is a refined fusion of Zen themes—rooted in Nebula.",
-    "homepage": "https://github.com/allecsc/Altover",
-    "preferences": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/main/preferences.json",
-    "style": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/main/chrome.css",
-    "readme": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/main/README.md",
-    "image": "https://github.com/allecsc/Altover/blob/main/image.png",
+    "homepage": "https://github.com/allecsc/Altover/tree/standalone",
+    "preferences": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/standalone/preferences.json",
+    "style": {
+        "chrome": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/standalone/userChrome.css",
+        "content": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/standalone/userContent.css"
+    },
+    "readme": "https://raw.githubusercontent.com/allecsc/Altover/refs/heads/standalone/README.md",
+    "image": "https://github.com/allecsc/Altover/blob/standalone/image.png",
     "author": "celalalt",
-    "version": "1.2.2",
+    "version": "0.8",
     "tags": [
         "sine",
         "theme",
-        "nebula",
         "minimal",
         "glass",
         "black"
     ],
-    "modules": "JustADumbPrsn/Zen-Nebula",      
     "createdAt": "2025-06-19",
-    "updatedAt": "2025-06-23"
+    "updatedAt": "2025-06-29",
+    "fork": ["zen"]
 }
