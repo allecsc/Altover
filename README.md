@@ -13,14 +13,20 @@ https://github.com/user-attachments/assets/aeb14a5f-7cab-4a0f-bbbf-f679bf772d93
 
 ###
 
-Altover is a refined fusion of Zen themes—rooted in [Nebula](https://github.com/JustAdumbPrsn/Zen-Nebula), inspired by [Natsumi](https://github.com/greeeen-dev/natsumi-browser), [Zemini](https://github.com/Mohammed55Z/Zemini), and [ZenZero](https://github.com/sameerasw/ZenZero), and shaped with a personal edge. It takes glassmorphism further, blending sharp minimal lines with soft blur and subtle golden highlights for a sleek, elevated UI experience.
+Altover is a refined fusion of Zen themes—rooted in [Nebula](https://github.com/JustAdumbPrsn/Zen-Nebula), inspired by [Natsumi](https://github.com/greeeen-dev/natsumi-browser), [Zemini](https://github.com/Mohammed55Z/Zemini), and [ZenZero](https://github.com/sameerasw/ZenZero), and shaped with a personal edge. It takes glassmorphism further, blending sharp minimal lines with soft blur and subtle golden highlights for a sleek, elevated UI experience. 
 
+_This version works as an add-on for Nebula._
+
+<h3 align="center" style="font-size: 1.8em; font-weight: bold; color: #da8d5e;">
+ • • • <a href="https://github.com/allecsc/Altover/tree/standalone" style="color: #da8d5e; text-decoration: none;">Check out the <u>Standalone</u> version</a> • • •
+</h3>
+    
 ###
 
 
 ## ✨ Features
 
-- Add-On for Nebula theme. _Check the store for [Standalone](https://github.com/allecsc/Altover/tree/standalone) version_
+- Add-On for Nebula theme.
 - Glass aesthetic with accent highlights _(Best used with dark theme)_
 - Floating panels with smooth transitions
 - Seamless, minimal UI elements
